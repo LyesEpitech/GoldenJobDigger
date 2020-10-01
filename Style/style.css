@@ -1,0 +1,15 @@
+div{
+	justify-content: space-evenly;
+}
+
+.card{
+	margin: 10px;
+}
+
+.sign{
+	margin: 5px
+}
+
+header{
+	opacity: 100%;
+}
