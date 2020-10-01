@@ -47,7 +47,7 @@
 					</button>
 				</div>
 				<div class="modal-body">
-					<form method="GET">
+					<form method="POST">
 						<div class="form-group">
 							<label for="exampleInputEmail1">Email address</label>
 							<input name="EmailSignIn" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
@@ -86,15 +86,15 @@
 							<label class="form-check-label" for="Radio2">Companies</label>
 						</div>
 						<div class="form-group">
-							<label for="InputEmail1">Email address</label>
+							<label for="InputEmail1">Email address</label><i class="fas fa-info-circle"></i>
 							<input name="EmailSignUp" type="email" class="form-control" id="InputEmail1" placeholder="example@example.com">
 						</div>
 						<div class="form-group">
-							<label for="InputFirstName">First name</label>
+							<label for="InputFirstName">First name</label><i class="fas fa-info-circle"></i>
 							<input name="FirstNameSignUp" type="text" class="form-control" id="InputFirstName" placeholder="Bryan">
 						</div>
 						<div class="form-group">
-							<label for="InputLastName">Last name</label>
+							<label for="InputLastName">Last name</label><i class="fas fa-info-circle"></i>
 							<input name="LastNameSignUp" type="text" class="form-control" id="InputLastName" placeholder="Johnson">
 						</div>
 						<div class="form-group">
@@ -105,42 +105,42 @@
 							</select>
 						</div>
 						<div class="form-group">
-							<label for="InputDate">Phone number</label>
+							<label for="InputDate">Date of birth</label>
 							<input name="DateSignUp" type="date" class="form-control" id="InputDate">
 						</div>
 						<div class="form-group">
-							<label for="InputTel">Phone number</label>
+							<label for="InputTel">Phone number</label><i class="fas fa-info-circle"></i>
 							<input name="TelSignUp" type="tel" class="form-control" id="InputTel" placeholder="0606060606">
 						</div>
 						<div class="form-group">
-							<label for="inputAddress">Address</label>
+							<label for="inputAddress">Address</label><i class="fas fa-info-circle"></i>
 							<input name="AdressSignUp" type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
 						</div>
 						<div class="form-group">
-							<label for="inputCity">City</label>
+							<label for="inputCity">City</label><i class="fas fa-info-circle"></i>
 							<input name="CitySignUp" type="text" class="form-control" id="inputCity" placeholder="New York">
 						</div>
 						<div class="form-group">
-							<label for="inputZipCode">Zip Code</label>
+							<label for="inputZipCode">Zip Code</label><i class="fas fa-info-circle"></i>
 							<input name="ZipCodeSignUp" type="text" class="form-control" id="inputZipCode" placeholder="10001">
 						</div>
 						<div class="form-group">
-							<label for="InputPassword1">Password</label>
+							<label for="InputPassword1">Password</label><i class="fas fa-info-circle"></i>
 							<input name="Password1SignUp" type="password" class="form-control" id="InputPassword1" placeholder="p@sSw0rd">
 						</div>
 						<div class="form-group">
-							<label for="InputPassword2">Confirm Password</label>
+							<label for="InputPassword2">Confirm Password</label><i class="fas fa-info-circle"></i>
 							<input name="Password2SignUp" type="password" class="form-control" id="InputPassword2" placeholder="p@sSw0rd">
 						</div>
-
-
-
-
+						<div class="form-group">
+							<label for="InputResume">Your Resume</label>
+							<input name="ResumeSignUp" type="file" class="form-control" id="InputResume" accept="application/pdf">
+						</div>
 						<div class="form-group form-check">
 							<input name="TermsSignUp" type="checkbox" class="form-check-input" id="exampleCheck1">
 							<label class="form-check-label" for="exampleCheck1">Accept Terms</label>
+							<i class="fas fa-info-circle"></i>
 						</div>
-
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

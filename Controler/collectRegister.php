@@ -1,12 +1,13 @@
 <?php
 $error = "";
 if (isset($_POST['SubmitSignUp'])) {
-	if(isset($_POST['EmailSignUp']) AND isset($_POST['FirstNameSignUp']) AND isset($_POST['LastNameSignUp']) AND isset($_POST['SexSignUp']) AND isset($_POST['DateSignUp']) AND isset($_POST['TelSignUp']) AND isset($_POST['AdressSignUp']) AND isset($_POST['CitySignUp']) AND isset($_POST['countrySignUp']) AND isset($_POST['ZipCodeSignUp']) AND isset($_POST['Password1SignUp']) AND isset($_POST['Password2SignUp']) AND isset($_POST['TermsSignUp'])){
+	if(isset($_POST['EmailSignUp']) AND isset($_POST['FirstNameSignUp']) AND isset($_POST['LastNameSignUp']) AND isset($_POST['SexSignUp']) AND isset($_POST['DateSignUp']) AND isset($_POST['TelSignUp']) AND isset($_POST['AdressSignUp']) AND isset($_POST['CitySignUp']) AND isset($_POST['ZipCodeSignUp']) AND isset($_POST['Password1SignUp']) AND isset($_POST['Password2SignUp']) AND isset($_POST['TermsSignUp'])){
 		$submit = $_POST['SubmitSignUp'];
 		$email = $_POST['EmailSignUp'];
 		$firstName = $_POST['FirstNameSignUp'];
 		$lastName = $_POST['LastNameSignUp'];
 		$sex = $_POST['SexSignUp'];
+		$birthDate = $_POST['DateSignUp'];
 		$tel = $_POST['TelSignUp'];
 		$adress = $_POST['AdressSignUp'];
 		$city = $_POST['CitySignUp'];
@@ -14,6 +15,7 @@ if (isset($_POST['SubmitSignUp'])) {
 		$password1 = hash("sha256", $_POST['Password1SignUp']);
 		$password2 = hash("sha256", $_POST['Password2SignUp']);
 		$terms = $_POST['TermsSignUp'];
+		$resume = $_POST['ResumeSignUp'];
 		$request = $dbh->prepare('SELECT email FROM People WHERE email=?');
 		$request->execute(array($dbh->quote($email)));
 		$result = $request->fetchAll();
@@ -28,7 +30,19 @@ if (isset($_POST['SubmitSignUp'])) {
 							if(preg_match($regex, $city)){
 								$regex = "~^[0-9]{5}$~";
 								if(preg_match($regex, $zipCode)){
-									echo "allo";
+									$regex = "#^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\W).{8,}$#";
+									if(preg_match($regex, $password1)){
+										if($password1 == $password2){
+											$password1 = hash("sha256", $password1);
+											$password2 = hash("sha256", $password2);
+											$request = $dbh->prepare('INSERT INTO `people` (`id`, `email`, `password`, `prenom`, `nom`, `date_naissance`, `adresse`, `code_postal`, `ville`, `resume`) VALUES NULL ?, ?, ?, ?, ?, ?, ?, ?, ?');
+											$request->execute(array($dbh->quote($email), $dbh->quote($password1), $dbh->quote($firstName), $dbh->quote($lastName), $dbh->quote($birthDate), $dbh->quote($adress), $dbh->quote($zipCode), $dbh->quote($city), $dbh->quote($resume)));
+										}else{
+											$error = "Both passwords must match.";
+										}
+									}else{
+										$error = "Invalid Password.";
+									}
 								}else{
 									$error = "Invalid ZipCode";
 								}
@@ -57,7 +71,6 @@ if (isset($_POST['SubmitSignUp'])) {
 
 echo $error;
 if($error != ""){
-	echo "<script> document.getElementById('modalBodySignUp').showModal(); </script>";
 	
 }
 /*

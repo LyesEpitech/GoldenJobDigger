@@ -106,4 +106,3 @@ document.getElementById("modalBodySignUp").innerHTML =
         <label class="form-check-label" for="exampleCheck1">Accept Terms</label>
     </div>`
 }
-

@@ -1,0 +1,15 @@
+Principaux
+1. Finir cookie de login 
+2. Redirection sur modal quand erreur dans form
+3. Finir Register
+4. Faire les différentes autorisations pour les companies et ou peoples
+5. Créer les pages secondaires (ads, actus, companies, event, advices)
+6. Mettre ads, companies dans les cards sur pages et home pages
+7. Profil (User, Companies)
+8. Interface admin
+
+
+
+
+Secondaire 
+1. google news api
