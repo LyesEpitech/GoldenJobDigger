@@ -40,7 +40,7 @@ function showCompanies(){
 }
 
 function showPeople(){
-
+    event.preventDefault();
 document.getElementById("modalBodySignUp").innerHTML =
     `<div class="form-check form-check-inline">
         <input class="form-check-input" type="radio" name="RolesSignUp" id="Radio1" value="People" onchange="showPeople()" checked>
@@ -84,13 +84,6 @@ document.getElementById("modalBodySignUp").innerHTML =
     <div class="form-group">
         <label for="inputCity">City</label>
         <input name="CitySignUp" type="text" class="form-control" id="inputCity" placeholder="New York">
-    </div>
-    <div class="form-group">
-        <label for="inputcountry">country</label>
-        <select name="countrySignUp" id="inputcountry" class="form-control">
-            <option selected>Choose...</option>
-            <option>...</option>
-        </select>
     </div>
     <div class="form-group">
         <label for="inputZipCode">Zip Code</label>

@@ -1,4 +1,6 @@
 <?php include '../Model/connexion.php'?>
+<?php include '../Controler/collectRegister.php'; ?>
+<?php include '../Controler/collectLogin.php'; ?>
 <!DOCTYPE html>
 
 <html lang="fr">

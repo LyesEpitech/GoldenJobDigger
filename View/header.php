@@ -1,4 +1,3 @@
-<?php include '../Controler/collectRegister.php'; ?>
 <header>
 	<div class="row heade sticky-top">
 
@@ -120,13 +119,6 @@
 						<div class="form-group">
 							<label for="inputCity">City</label>
 							<input name="CitySignUp" type="text" class="form-control" id="inputCity" placeholder="New York">
-						</div>
-						<div class="form-group">
-							<label for="inputcountry">country</label>
-							<select name="countrySignUp" id="inputcountry" class="form-control">
-								<option selected>Choose...</option>
-								<option>...</option>
-							</select>
 						</div>
 						<div class="form-group">
 							<label for="inputZipCode">Zip Code</label>

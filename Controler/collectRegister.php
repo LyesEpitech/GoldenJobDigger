@@ -10,13 +10,12 @@ if (isset($_POST['SubmitSignUp'])) {
 		$tel = $_POST['TelSignUp'];
 		$adress = $_POST['AdressSignUp'];
 		$city = $_POST['CitySignUp'];
-		$country = $_POST['countrySignUp'];
 		$zipCode = $_POST['ZipCodeSignUp'];
-		$password1 = $_POST['Password1SignUp'];
-		$password2 = $_POST['Password2SignUp'];
+		$password1 = hash("sha256", $_POST['Password1SignUp']);
+		$password2 = hash("sha256", $_POST['Password2SignUp']);
 		$terms = $_POST['TermsSignUp'];
 		$request = $dbh->prepare('SELECT email FROM People WHERE email=?');
-		$request->execute(array($email));
+		$request->execute(array($dbh->quote($email)));
 		$result = $request->fetchAll();
 		if(filter_var($email, FILTER_VALIDATE_EMAIL) AND !isset($result[0])){
 			$regex = "/[a-zA-Z]{3,30}$/";
@@ -24,13 +23,14 @@ if (isset($_POST['SubmitSignUp'])) {
 				if(preg_match($regex, $lastName)){
 					$regex = "#^0[1-68]([-. ]?[0-9]{2}){4}$#";
 					if(preg_match($regex, $tel)){
-						$regex = "/^[A-Za-zÀ-ÿ\.\- ]{1,34}$/";
+						$regex = "/^[A-Za-zÀ-ÿ0-9\.,\- ]{1,34}$/";
 						if(preg_match($regex, $adress)){
 							if(preg_match($regex, $city)){
-								if(preg_match($regex, $country)){
-
+								$regex = "~^[0-9]{5}$~";
+								if(preg_match($regex, $zipCode)){
+									echo "allo";
 								}else{
-									$error = "Invalid country.";
+									$error = "Invalid ZipCode";
 								}
 							}else{
 								$error = "Invalid city.";
@@ -52,15 +52,14 @@ if (isset($_POST['SubmitSignUp'])) {
 		}
 	}else{
 		$error = "Fill all the blanks.";
-
 	}	
 }
 
-
-$var = json_decode((file_get_contents("../Json/country.json")));
-echo $var;
-
 echo $error;
+if($error != ""){
+	echo "<script> document.getElementById('modalBodySignUp').showModal(); </script>";
+	
+}
 /*
 
 	
