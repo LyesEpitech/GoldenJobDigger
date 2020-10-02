@@ -11,6 +11,12 @@
 	<link rel="stylesheet" type="text/css" href="../Style/style.css">
 </head>
 <body>
+
+<?php
+            if(isset($_COOKIE['id'])){
+                echo 'Votre ID de session est le ' .$_COOKIE['id'];
+            }
+        ?>
 	<div class="container">
 		<?php include 'header.php';?>
 

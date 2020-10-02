@@ -1,7 +1,7 @@
 <?php
 	$dsn = 'mysql:dbname=GoldenBase;host=localhost';
 	$user = 'root';
-	$password = '';
+	$password = 'root';
 
 	try {
 	    $dbh = new PDO($dsn, $user, $password);
