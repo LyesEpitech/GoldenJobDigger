@@ -2,8 +2,8 @@
 
 
 $error = "";
-if (isset($_POST['SubmitSignUp'])) {
-	if (isset($_POST['EmailSignUp']) and isset($_POST['FirstNameSignUp']) and isset($_POST['LastNameSignUp']) and isset($_POST['SexSignUp']) and isset($_POST['DateSignUp']) and isset($_POST['TelSignUp']) and isset($_POST['AdressSignUp']) and isset($_POST['CitySignUp']) and isset($_POST['ZipCodeSignUp']) and isset($_POST['Password1SignUp']) and isset($_POST['Password2SignUp']) and isset($_POST['TermsSignUp'])) {
+if (isset($_POST['SubmitSignUp']) AND isset($_POST['EmailSignUp'])) {
+	if (isset($_POST['FirstNameSignUp']) and isset($_POST['LastNameSignUp']) and isset($_POST['SexSignUp']) and isset($_POST['DateSignUp']) and isset($_POST['TelSignUp']) and isset($_POST['AdressSignUp']) and isset($_POST['CitySignUp']) and isset($_POST['ZipCodeSignUp']) and isset($_POST['Password1SignUp']) and isset($_POST['Password2SignUp']) and isset($_POST['TermsSignUp'])) {
 		$submit = $_POST['SubmitSignUp'];
 		$email = $_POST['EmailSignUp'];
 		$firstName = $_POST['FirstNameSignUp'];
@@ -37,8 +37,10 @@ if (isset($_POST['SubmitSignUp'])) {
 										if ($password1 == $password2) {
 											$password1 = hash("sha256", $password1);
 											$password2 = hash("sha256", $password2);
-											if ($_FILES["ResumeSignUp"]["type"] == "document/pdf") {
-												if ($_FILES["ResumeSignUp"]["size"] < 1000000) {
+											$uploaddir = '../Files/resumes/';
+											$uploadfile = $uploaddir . basename($email . $_FILES['ResumeSignUp']['name']);
+											if ($_FILES["ResumeSignUp"]["type"] == "application/pdf") {
+												if ($_FILES["ResumeSignUp"]["size"] < 10000000) {
 													if (move_uploaded_file($_FILES['ResumeSignUp']['tmp_name'], $uploadfile)) {
 														$count = $request = $dbh->exec('INSERT INTO people (`email`, `password`, `prenom`, `nom`, `date_naissance`, `adresse`, `code_postal`, `ville`, `resume`) VALUES (' . $dbh->quote($email) . ', ' . $dbh->quote($password1) . ', ' . $dbh->quote($firstName) . ', ' . $dbh->quote($lastName) . ', ' . $dbh->quote($birthDate) . ', ' . $dbh->quote($adress) . ', ' . $dbh->quote($zipCode) . ', ' . $dbh->quote($city) . ', ' . $dbh->quote($resume['name']) . ')');
 														print_r($count);
@@ -83,8 +85,8 @@ if (isset($_POST['SubmitSignUp'])) {
 		$error = "Fill all the blanks.";
 	}
 }
-if (isset($_POST['SubmitSignUp'])) {
-	if (isset($_POST['EmailSignUpCompanies']) and isset($_POST['NameSignUp']) and isset($_POST['CitySignUp']) and isset($_POST['Password1SignUp']) and isset($_POST['Password2SignUp']) and isset($_POST['TermsSignUp']) and isset($_POST['DescriptionSignUp'])) {
+if (isset($_POST['SubmitSignUp']) AND isset($_POST['EmailSignUpCompanies'])) {
+	if (isset($_POST['NameSignUp']) and isset($_POST['CitySignUp']) and isset($_POST['Password1SignUp']) and isset($_POST['Password2SignUp']) and isset($_POST['TermsSignUp']) and isset($_POST['DescriptionSignUp'])) {
 		$submit = $_POST['SubmitSignUp'];
 		$email = $_POST['EmailSignUpCompanies'];
 		$name = $_POST['NameSignUp'];
