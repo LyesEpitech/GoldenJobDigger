@@ -95,6 +95,15 @@ if (isset($_POST['SubmitSignUp'])) {
 							$password2 = hash("sha256", $password2);
 							$count = $request = $dbh->exec('INSERT INTO companies (`email`, `password`, `name`, `description`, `ville`, `photo`) VALUES (' . $dbh->quote($email) . ', ' . $dbh->quote($password1) . ', ' . $dbh->quote($name) . ',' . $dbh->quote($description) . ', ' . $dbh->quote($city) . ',' . $dbh->quote($pic) . ')');
 							print_r($count);
+							$uploaddir = '../Files/pics';
+							$uploadfile = $uploaddir . basename($email . $_FILES['PicSignUp']);
+							if (move_uploaded_file($_FILES['PicSignUp'], $uploadfile)) {
+								echo "Bon";
+							} else {
+								echo "Pas bon";
+							}
+							echo 'Info:';
+							print_r($_FILES);
 							return false;
 						} else {
 							$error = "Both passwords must match.";
@@ -119,19 +128,3 @@ if (isset($_POST['SubmitSignUp'])) {
 echo $error;
 if ($error != "") {
 }
-/*
-
-	
-
-if($_POST['RolesSignUp'] == "People"){
-		$request = $dbh->prepare("INSERT INTO People (firstname, lastname, email) VALUES (?, ?, ?)");
-	}else{
-		$request = $dbh->prepare("INSERT INTO Companies (firstname, lastname, email) VALUES (?, ?, ?)");
-		$request->bind_param($firstname, $lastname, $email);
-	}	
-	execute($request);
-	
-	if (!preg_match("/^[A-Za-z0-9]{10, 40}$/i")  titre 
-	if (!preg_match("^[0-9]{5,5}$")  
-
-	*/
