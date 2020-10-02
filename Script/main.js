@@ -9,13 +9,16 @@ function showCompanies(){
         <label class="form-check-label" for="Radio2">Companies</label>
     </div>
     <div class="form-group">
-        <label for="InputEmail">Email address</label>
-        <input name="EmailSignUp" type="email" class="form-control" id="InputEmail" placeholder="example@example.com">
+        <label for="InputEmailCompanies">Email address</label>
+        <input name="EmailSignUpCompanies" type="email" class="form-control" id="InputEmailCompanies" placeholder="example@example.com">
     </div>
-    
     <div class="form-group">
-        <label for="InputName">First name</label>
-        <input name="NameSignUp" type="text" class="form-control" id="InputName" placeholder="Bryan">
+        <label for="InputName">Name</label>
+        <input name="NameSignUp" type="text" class="form-control" id="InputName" placeholder="Google">
+    </div>
+    <div class="form-group">
+        <label for="InputDescription">Name</label>
+        <input name="DescriptionSignUp" type="textarea" class="form-control" id="InputDescription" placeholder="In our entreprise we are nanannana">
     </div>
     <div class="form-group">
         <label for="inputCity">City</label>
@@ -40,7 +43,6 @@ function showCompanies(){
 }
 
 function showPeople(){
-    event.preventDefault();
 document.getElementById("modalBodySignUp").innerHTML =
     `<div class="form-check form-check-inline">
         <input class="form-check-input" type="radio" name="RolesSignUp" id="Radio1" value="People" onchange="showPeople()" checked>
