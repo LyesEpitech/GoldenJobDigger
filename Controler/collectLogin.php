@@ -14,7 +14,7 @@ if(isset($_POST['SubmitSignIn'])) {
             $userinfo = $reqPeople->fetch();
             $id = $userinfo['id'];
             $role= $userinfo['role'];
-            setcookie('id', $userinfo["id"], 'role', $userinfo["role"] ,time()+3600*24 );
+            setcookie('id', $userinfo["id"], time()+3600*24 );
         } else {
             $reqCompanies = $dbh->prepare("SELECT * FROM companies WHERE email = ? AND password = ? ");
             $reqCompanies->execute(array($mailconnect, $mdpconnect));
@@ -23,7 +23,7 @@ if(isset($_POST['SubmitSignIn'])) {
                 $userinfo = $reqCompanies->fetch();
                 $id = $userinfo['id'];
                 $role= $userinfo['role'];
-                setcookie('id', $userinfo["id"], 'role', $userinfo["role"] ,  time()+3600*24);
+                setcookie('id', $userinfo["id"],  time()+3600*24);
             } else {
             $erreur = "Mauvais mail ou mot de passe !";
             }
