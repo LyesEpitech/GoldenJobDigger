@@ -11,7 +11,6 @@
 	<link rel="stylesheet" type="text/css" href="../Style/style.css">
 </head>
 <body>
-
 	<div class="container">
 		<?php include 'header.php';?>
 

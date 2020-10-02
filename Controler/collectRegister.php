@@ -1,4 +1,6 @@
 <?php
+
+
 $error = "";
 if (isset($_POST['SubmitSignUp'])) {
 	if (isset($_POST['EmailSignUp']) and isset($_POST['FirstNameSignUp']) and isset($_POST['LastNameSignUp']) and isset($_POST['SexSignUp']) and isset($_POST['DateSignUp']) and isset($_POST['TelSignUp']) and isset($_POST['AdressSignUp']) and isset($_POST['CitySignUp']) and isset($_POST['ZipCodeSignUp']) and isset($_POST['Password1SignUp']) and isset($_POST['Password2SignUp']) and isset($_POST['TermsSignUp'])) {
@@ -15,7 +17,7 @@ if (isset($_POST['SubmitSignUp'])) {
 		$password1 = hash("sha256", $_POST['Password1SignUp']);
 		$password2 = hash("sha256", $_POST['Password2SignUp']);
 		$terms = $_POST['TermsSignUp'];
-		$resume = $_POST['ResumeSignUp'];
+		$resume = $_FILES['ResumeSignUp'];
 		$request = $dbh->prepare('SELECT email FROM People WHERE email=?');
 		$request->execute(array($dbh->quote($email)));
 		$result = $request->fetchAll();
@@ -35,9 +37,21 @@ if (isset($_POST['SubmitSignUp'])) {
 										if ($password1 == $password2) {
 											$password1 = hash("sha256", $password1);
 											$password2 = hash("sha256", $password2);
-											$count = $request = $dbh->exec('INSERT INTO people (`email`, `password`, `prenom`, `nom`, `date_naissance`, `adresse`, `code_postal`, `ville`, `resume`) VALUES (' . $dbh->quote($email) . ', ' . $dbh->quote($password1) . ', ' . $dbh->quote($firstName) . ', ' . $dbh->quote($lastName) . ', ' . $dbh->quote($birthDate) . ', ' . $dbh->quote($adress) . ', ' . $dbh->quote($zipCode) . ', ' . $dbh->quote($city) . ', ' . $dbh->quote($resume) . ')');
-											print_r($count);
-											return false;
+											if ($_FILES["ResumeSignUp"]["type"] == "document/pdf") {
+												if ($_FILES["ResumeSignUp"]["size"] < 1000000) {
+													if (move_uploaded_file($_FILES['ResumeSignUp']['tmp_name'], $uploadfile)) {
+														$count = $request = $dbh->exec('INSERT INTO people (`email`, `password`, `prenom`, `nom`, `date_naissance`, `adresse`, `code_postal`, `ville`, `resume`) VALUES (' . $dbh->quote($email) . ', ' . $dbh->quote($password1) . ', ' . $dbh->quote($firstName) . ', ' . $dbh->quote($lastName) . ', ' . $dbh->quote($birthDate) . ', ' . $dbh->quote($adress) . ', ' . $dbh->quote($zipCode) . ', ' . $dbh->quote($city) . ', ' . $dbh->quote($resume['name']) . ')');
+														print_r($count);
+														return false;
+													} else {
+														$error = "Error in files upload.";
+													}
+												} else {
+													$error = "Files is too fat.";
+												}
+											} else {
+												$error = "Bad files format.";
+											}
 										} else {
 											$error = "Both passwords must match.";
 										}
@@ -79,7 +93,7 @@ if (isset($_POST['SubmitSignUp'])) {
 		$password1 = hash("sha256", $_POST['Password1SignUp']);
 		$password2 = hash("sha256", $_POST['Password2SignUp']);
 		$terms = $_POST['TermsSignUp'];
-		$pic = $_POST['PicSignUp'];
+		$pic = $_FILES['PicSignUp'];
 		$request = $dbh->prepare('SELECT email FROM Companies WHERE email=?');
 		$request->execute(array($dbh->quote($email)));
 		$result = $request->fetchAll();
@@ -93,18 +107,23 @@ if (isset($_POST['SubmitSignUp'])) {
 						if ($password1 == $password2) {
 							$password1 = hash("sha256", $password1);
 							$password2 = hash("sha256", $password2);
-							$count = $request = $dbh->exec('INSERT INTO companies (`email`, `password`, `name`, `description`, `ville`, `photo`) VALUES (' . $dbh->quote($email) . ', ' . $dbh->quote($password1) . ', ' . $dbh->quote($name) . ',' . $dbh->quote($description) . ', ' . $dbh->quote($city) . ',' . $dbh->quote($pic) . ')');
-							print_r($count);
-							$uploaddir = '../Files/pics';
-							$uploadfile = $uploaddir . basename($email . $_FILES['PicSignUp']);
-							if (move_uploaded_file($_FILES['PicSignUp'], $uploadfile)) {
-								echo "Bon";
+							$uploaddir = '../Files/pics/';
+							$uploadfile = $uploaddir . basename($email . $_FILES['PicSignUp']['name']);
+							if ($_FILES["PicSignUp"]["type"] == "image/jpg" or $_FILES["PicSignUp"]["type"] == "image/png" or $_FILES["PicSignUp"]["type"] == "image/jpeg" or $_FILES["PicSignUp"]["type"] == "image/gif") {
+								if ($_FILES["PicSignUp"]["size"] < 1000000) {
+									if (move_uploaded_file($_FILES['PicSignUp']['tmp_name'], $uploadfile)) {
+										$count = $request = $dbh->exec('INSERT INTO companies (`email`, `password`, `name`, `description`, `ville`, `photo`) VALUES (' . $dbh->quote($email) . ', ' . $dbh->quote($password1) . ', ' . $dbh->quote($name) . ',' . $dbh->quote($description) . ', ' . $dbh->quote($city) . ',' . $dbh->quote($pic['name']) . ')');
+										print_r($count);
+										return false;
+									} else {
+										$error = "Error in files upload.";
+									}
+								} else {
+									$error = "Files is too fat.";
+								}
 							} else {
-								echo "Pas bon";
+								$error = "Bad files format.";
 							}
-							echo 'Info:';
-							print_r($_FILES);
-							return false;
 						} else {
 							$error = "Both passwords must match.";
 						}

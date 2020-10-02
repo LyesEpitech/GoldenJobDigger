@@ -47,7 +47,7 @@
 					</button>
 				</div>
 				<div class="modal-body">
-					<form method="POST">
+					<form method="POST" enctype="multipart/form-data">
 						<div class="form-group">
 							<label for="exampleInputEmail1">Email address</label>
 							<input name="EmailSignIn" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
@@ -75,7 +75,7 @@
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
-				<form method="POST">
+				<form method="POST" enctype="multipart/form-data">
 					<div class="modal-body" id="modalBodySignUp">
 						<div class="form-check form-check-inline">
 							<input class="form-check-input" type="radio" name="RolesSignUp" id="Radio1" value="People" onchange="showPeople()" checked>
