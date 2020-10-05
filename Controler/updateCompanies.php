@@ -1,16 +1,15 @@
 <?php
 
 
-if (isset($_POST['SubmitSignUp'])) {
+if (isset($_POST['SubmitUpdate'])) {
 	if (isset($_POST['EmailSignUpCompanies']) and isset($_POST['NameSignUp']) and isset($_POST['CitySignUp']) and isset($_POST['Password1SignUp']) and isset($_POST['Password2SignUp']) and isset($_POST['TermsSignUp']) and isset($_POST['DescriptionSignUp'])) {
-		$submit = $_POST['SubmitSignUp'];
+		$submit = $_POST['SubmitUpdate'];
 		$email = $_POST['EmailSignUpCompanies'];
 		$name = $_POST['NameSignUp'];
 		$description = $_POST['DescriptionSignUp'];
 		$city = $_POST['CitySignUp'];
 		$password1 = hash("sha256", $_POST['Password1SignUp']);
 		$password2 = hash("sha256", $_POST['Password2SignUp']);
-		$terms = $_POST['TermsSignUp'];
 		$pic = $_FILES['PicSignUp'];
 		$request = $dbh->prepare('SELECT email FROM Companies WHERE email=?');
 		$request->execute(array($dbh->quote($email)));
@@ -30,7 +29,7 @@ if (isset($_POST['SubmitSignUp'])) {
 							if ($_FILES["PicSignUp"]["type"] == "image/jpg" or $_FILES["PicSignUp"]["type"] == "image/png" or $_FILES["PicSignUp"]["type"] == "image/jpeg" or $_FILES["PicSignUp"]["type"] == "image/gif") {
 								if ($_FILES["PicSignUp"]["size"] < 1000000) {
 									if (move_uploaded_file($_FILES['PicSignUp']['tmp_name'], $uploadfile)) {
-										$count = $request = $dbh->exec('INSERT INTO companies (`email`, `password`, `name`, `description`, `ville`, `photo`) VALUES (' . $dbh->quote($email) . ', ' . $dbh->quote($password1) . ', ' . $dbh->quote($name) . ',' . $dbh->quote($description) . ', ' . $dbh->quote($city) . ',' . $dbh->quote($pic['name']) . ')');
+										$count = $request = $dbh->exec('UPDATE companies (`email`, `password`, `name`, `description`, `ville`, `photo`) VALUES (' . $dbh->quote($email) . ', ' . $dbh->quote($password1) . ', ' . $dbh->quote($name) . ',' . $dbh->quote($description) . ', ' . $dbh->quote($city) . ',' . $dbh->quote($pic['name']) . ')');
 										print_r($count);
 										return false;
 									} else {
@@ -64,8 +63,60 @@ if (isset($_POST['SubmitSignUp'])) {
 
 echo $error;
 if ($error != "") {
-}
-
-
+};
 
 ?>
+
+<div class="container">
+	<?php include 'header.php'; ?>
+
+	<main>
+		<form method="POST">
+			<div>
+
+
+				<div class="form-group">
+					<label for="InputEmailCompanies">Email address</label>
+					<input name="EmailSignUpCompanies" type="email" class="form-control" id="InputEmailCompanies" placeholder="<?php echo ($email); ?>">
+				</div>
+				<div class="form-group">
+					<label for="InputName">Name</label>
+					<input name="NameSignUp" type="text" class="form-control" id="InputName" placeholder="<?php echo ($name); ?>">
+				</div>
+				<div class="form-group">
+					<label for="InputDescription">Descr</label>
+					<input name="DescriptionSignUp" type="textarea" class="form-control" id="InputDescription" placeholder="<?php echo ($description); ?>">
+				</div>
+				<div class="form-group">
+					<label for="inputCity">City</label>
+					<input name="CitySignUp" type="text" class="form-control" id="inputCity" placeholder="<?php echo ($city); ?>">
+				</div>
+				<div class="form-group">
+					<label for="InputLastPassword">Last password</label><i class="fas fa-info-circle"></i>
+					<input name="LastPassword" type="password" class="form-control" id="InputLastPassword" placeholder="p@sSw0rd">
+				</div>
+				<div class="form-group">
+					<label for="InputNewPassword1">New password</label><i class="fas fa-info-circle"></i>
+					<input name="NewPassword1" type="password" class="form-control" id="InputNewPassword1" placeholder="p@sSw0rd">
+				</div>
+				<div class="form-group">
+					<label for="InputNewPassword2">Confirm new password</label><i class="fas fa-info-circle"></i>
+					<input name="NewPassword2" type="password" class="form-control" id="NewPassword2" placeholder="p@sSw0rd">
+				</div>
+				<div class="form-group">
+					<label for="InputPic">Your Pic</label>
+					<input name="PicSignUp" type="file" class="form-control" id="InputPic" accept="image/">
+				</div>
+				<div>
+					<button name="SubmitUpdate" type="submit" class="btn btn-primary">Update</button>
+				</div>
+
+
+			</div>
+	</main>
+</div>
+
+
+
+
+<?php include 'footer.php'; ?>
