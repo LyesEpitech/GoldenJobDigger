@@ -1,7 +1,7 @@
 <?php
 	$dsn = 'mysql:dbname=GoldenBase;host=localhost';
-	$user = 'root';
-	$password = '';
+	$user = 'lucas';
+	$password = 'oscar';
 
 
 	try {
