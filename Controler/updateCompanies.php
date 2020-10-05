@@ -60,15 +60,25 @@ if (isset($_POST['SubmitUpdate'])) {
 		$error = "Fill all the blanks.";
 	}
 }
-
+ 
 echo $error;
 if ($error != "") {
 };
 
 ?>
 
+
+
+
+
 <div class="container">
 	<?php include 'header.php'; ?>
+
+
+	<class="my-5 h2"><?php echo ($name); ?></h2>
+
+<img class="rounded-circle center" alt="100x100" src="<?php echo ($pic); ?>"
+  data-holder-rendered="true">h2 
 
 	<main>
 		<form method="POST">
