@@ -28,7 +28,7 @@
 							</div>
 						</li>
 					</ul>
-					<form class="form-inline my-2 my-lg-0">
+					<form class="form-inline my-2 my-lg-0" id="buttonHeader">
 						<button class="sign btn btn-outline-success my-2 my-sm-0" type="button" data-toggle="modal" data-target="#signInModal">Sign in</button>
 						<button class="sign btn btn-outline-success my-2 my-sm-0" type="button" data-toggle="modal" data-target="#signUpModal">Sign up</button>
 					</form>

@@ -1,6 +1,6 @@
-function showCompanies(){
+function showCompanies() {
     document.getElementById("modalBodySignUp").innerHTML =
-    `<div class="form-check form-check-inline">
+        `<div class="form-check form-check-inline">
         <input class="form-check-input" type="radio" name="RolesSignUp" id="Radio1" value="People" onchange="showPeople()" >
         <label class="form-check-label" for="Radio1" >People</label>
     </div>
@@ -42,9 +42,9 @@ function showCompanies(){
     </div>`
 }
 
-function showPeople(){
-document.getElementById("modalBodySignUp").innerHTML =
-    `<div class="form-check form-check-inline">
+function showPeople() {
+    document.getElementById("modalBodySignUp").innerHTML =
+        `<div class="form-check form-check-inline">
         <input class="form-check-input" type="radio" name="RolesSignUp" id="Radio1" value="People" onchange="showPeople()" checked>
         <label class="form-check-label" for="Radio1" >People</label>
     </div>
@@ -107,4 +107,16 @@ document.getElementById("modalBodySignUp").innerHTML =
         <input name="TermsSignUp" type="checkbox" class="form-check-input" id="exampleCheck1">
         <label class="form-check-label" for="exampleCheck1">Accept Terms</label>
     </div>`
+}
+
+if ((document.cookie).includes("id")) {
+    document.getElementById("buttonHeader").innerHTML = `<form class="form-inline my-2 my-lg-0">
+    <button class="sign profil btn btn-outline-success my-2 my-sm-0" type="button">Profil</button>
+    <button class="sign deco btn btn-outline-success my-2 my-sm-0" type="button" onclick="redirect()">Deconnexion</button>
+    </form>`;
+}
+
+
+function redirect(){
+    window.location.replace("../Controler/deconnexion.php");
 }

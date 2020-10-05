@@ -44,7 +44,6 @@ if (isset($_POST['SubmitSignUp']) AND isset($_POST['EmailSignUp'])) {
 													if (move_uploaded_file($_FILES['ResumeSignUp']['tmp_name'], $uploadfile)) {
 														$count = $request = $dbh->exec('INSERT INTO people (`email`, `password`, `prenom`, `nom`, `date_naissance`, `adresse`, `code_postal`, `ville`, `resume`) VALUES (' . $dbh->quote($email) . ', ' . $dbh->quote($password1) . ', ' . $dbh->quote($firstName) . ', ' . $dbh->quote($lastName) . ', ' . $dbh->quote($birthDate) . ', ' . $dbh->quote($adress) . ', ' . $dbh->quote($zipCode) . ', ' . $dbh->quote($city) . ', ' . $dbh->quote($resume['name']) . ')');
 														print_r($count);
-														return false;
 													} else {
 														$error = "Error in files upload.";
 													}
@@ -116,7 +115,6 @@ if (isset($_POST['SubmitSignUp']) AND isset($_POST['EmailSignUpCompanies'])) {
 									if (move_uploaded_file($_FILES['PicSignUp']['tmp_name'], $uploadfile)) {
 										$count = $request = $dbh->exec('INSERT INTO companies (`email`, `password`, `name`, `description`, `ville`, `photo`) VALUES (' . $dbh->quote($email) . ', ' . $dbh->quote($password1) . ', ' . $dbh->quote($name) . ',' . $dbh->quote($description) . ', ' . $dbh->quote($city) . ',' . $dbh->quote($pic['name']) . ')');
 										print_r($count);
-										return false;
 									} else {
 										$error = "Error in files upload.";
 									}

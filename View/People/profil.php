@@ -1,4 +1,4 @@
-<?php include '../Model/connexion.php'?>
+<?php include '../../Model/connexion.php'?>
 <!DOCTYPE html>
 
 <html lang="fr">
@@ -16,7 +16,7 @@
             }
         ?>
 	<div class="container">
-		<?php include 'header.php';?>
+		<?php include '../header.php';?>
 
 		<main>
         <form method="POST">
@@ -83,7 +83,7 @@
 				</form>   
 		</main>
 		
-		<?php include 'footer.php';?>
+		<?php include '../footer.php';?>
 	</div>
 		<script src="https://kit.fontawesome.com/c5dc9dbc82.js" crossorigin="anonymous"></script>
 		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
