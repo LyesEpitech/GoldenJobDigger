@@ -21,7 +21,7 @@ for ($i = 0; $i < $reqAds->rowCount(); $i++) {
                         <div class="card-body">
                             <h5 class="card-title">'.$title.'</h5> 
                             <p class="card-text">'.$description.'</p>
-                            <a href="../View/ads.php?'.$idAds.'" class="btn btn-primary">More information</a>
+                            <a href="../View/ads.php?'.$idAds.'" class="btn btn-primary">More information</a></br>
                             <a href="../View/companies.php?'.$idCompanies.'"><small>'.$companiesName.'</small><img src="../Files/pics/'.$companiesPics.'" width="50" height="50"></a>
                         </div>
                     </div>
