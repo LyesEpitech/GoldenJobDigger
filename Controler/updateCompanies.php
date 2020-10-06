@@ -4,17 +4,27 @@ include 'connexion.php';
 
 
 
+    /*$reqPic = $dbh->prepare("SELECT photo FROM companies WHERE id = ?");
+    $reqPic->execute($_COOKIE['id']);
+	$picpic = $reqPic->fetch();
+
+	$photo = $picpic; */
+
+
+
 
 	$reqCompanies = $dbh->prepare("SELECT * FROM companies WHERE id = ?");
     $reqCompanies->execute(array($_COOKIE['id']));
 	$result = $reqCompanies->fetchAll();
-		
-	
+
+
+
 	$email = $result[0]["email"];
 	$name = $result[0]["name"];
 	$description = $result[0]["description"];
 	$city = $result[0]["ville"];
 	$pic = $result[0]["photo"];
+
 
 
 

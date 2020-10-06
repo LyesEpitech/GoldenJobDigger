@@ -16,6 +16,12 @@
 	if (isset($_COOKIE['id'])) {
 		echo 'Votre ID de session est le ' . $_COOKIE['id'];
 	}
+
+	else {
+
+		header('Location: ../home.php');      
+
+	}
 	
 	?>
 
