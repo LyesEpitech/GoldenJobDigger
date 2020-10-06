@@ -1,5 +1,7 @@
 <?php
 
+include 'connexion.php';
+
 
 if (isset($_POST['SubmitUpdate'])) {
 	if (isset($_POST['EmailSignUp']) and isset($_POST['FirstNameSignUp']) and isset($_POST['LastNameSignUp']) and isset($_POST['SexSignUp']) and isset($_POST['DateSignUp']) and isset($_POST['TelSignUp']) and isset($_POST['AdressSignUp']) and isset($_POST['CitySignUp']) and isset($_POST['ZipCodeSignUp']) and isset($_POST['Password1SignUp']) and isset($_POST['Password2SignUp']) and isset($_POST['TermsSignUp'])) {
@@ -85,78 +87,3 @@ if (isset($_POST['SubmitUpdate'])) {
 
 ?>
 
-
-<div class="container">
-	<?php include 'header.php'; ?>
-
-	<main>
-		<form method="POST">
-			<div>
-				<div class="form-group">
-					<label for="InputEmail1">Email address</label><i class="fas fa-info-circle"></i>
-					<input name="EmailSignUp" type="email" class="form-control" id="InputEmail1" placeholder="<?php echo ($email); ?>">
-				</div>
-				<div class="form-group">
-					<label for="InputFirstName">First name</label><i class="fas fa-info-circle"></i>
-					<input name="FirstNameSignUp" type="text" class="form-control" id="InputFirstName" placeholder="<?php echo ($firstName); ?>">
-				</div>
-				<div class="form-group">
-					<label for="InputLastName">Last name</label><i class="fas fa-info-circle"></i>
-					<input name="LastNameSignUp" type="text" class="form-control" id="InputLastName" placeholder="<?php echo ($lastName); ?>">
-				</div>
-				<div class="form-group">
-					<label for="inputSex">Sex</label>
-					<select name="SexSignUp" id="inputSex" class="form-control">
-						<option <?php if ($sex['sex'] == 'Male') {
-									echo "selected='selected'";
-								} ?>>Male</option>
-						<option <?php if ($sex['sex'] == 'Female') {
-									echo "selected='selected'";
-								} ?>>Female</option>
-					</select>
-				</div>
-
-				<div class="form-group">
-					<label for="InputDate">Date of birth</label>
-					<input name="DateSignUp" type="date" class="form-control" id="InputDate" placeholder="<?php echo ($birthDate); ?>">
-				</div>
-				<div class="form-group">
-					<label for="InputTel">Phone number</label><i class="fas fa-info-circle"></i>
-					<input name="TelSignUp" type="tel" class="form-control" id="InputTel" placeholder="<?php echo ($tel); ?>">
-				</div>
-				<div class="form-group">
-					<label for="inputAddress">Address</label><i class="fas fa-info-circle"></i>
-					<input name="AdressSignUp" type="text" class="form-control" id="inputAddress" placeholder="<?php echo ($adress); ?>"">
-						</div>
-						<div class=" form-group">
-					<label for="inputCity">City</label><i class="fas fa-info-circle"></i>
-					<input name="CitySignUp" type="text" class="form-control" id="inputCity" placeholder="<?php echo ($city); ?>"">
-						</div>
-						<div class=" form-group">
-					<label for="inputZipCode">Zip Code</label><i class="fas fa-info-circle"></i>
-					<input name="ZipCodeSignUp" type="text" class="form-control" id="inputZipCode" placeholder="<?php echo ($zipCode); ?>">
-				</div>
-				<div class="form-group">
-					<label for="InputLastPassword">Last password</label><i class="fas fa-info-circle"></i>
-					<input name="LastPassword" type="password" class="form-control" id="InputLastPassword" placeholder="p@sSw0rd">
-				</div>
-				<div class="form-group">
-					<label for="InputNewPassword1">New password</label><i class="fas fa-info-circle"></i>
-					<input name="NewPassword1" type="password" class="form-control" id="InputNewPassword1" placeholder="p@sSw0rd">
-				</div>
-				<div class="form-group">
-					<label for="InputNewPassword2">Confirm new password</label><i class="fas fa-info-circle"></i>
-					<input name="NewPassword2" type="password" class="form-control" id="NewPassword2" placeholder="p@sSw0rd">
-				</div>
-				<div class="form-group">
-					<label for="InputResume">Your Resume</label>
-					<input name="ResumeSignUp" type="file" class="form-control" id="InputResume" accept="application/pdf">
-				</div>
-			</div>
-			<div>
-				<button name="SubmitUpdate" type="submit" class="btn btn-primary">Update</button>
-			</div>
-		</form>
-	</main>
-
-	<?php include 'footer.php'; ?>

@@ -1,5 +1,6 @@
 <?php
 
+include("../Model/connexion.php");
 include("../View/header.php");
 
 if (isset($_POST['SubmitUpdate'])) {
@@ -72,6 +73,7 @@ if ($error != "") {
 
 
 
+<<<<<<< HEAD
 <div class="container">
 	<?php include 'header.php'; ?>
 
@@ -132,3 +134,5 @@ if ($error != "") {
 
 <?php include 'footer.php'; ?>
 
+=======
+>>>>>>> d6dff9599be49d42521b332c06ce1a7a50871a7e
