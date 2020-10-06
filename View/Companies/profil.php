@@ -17,13 +17,15 @@
         ?>
 	<div class="container">
 	<?php include 'header.php'; ?>
-	<?php include '../../Controler/updateCompanies.php.php' ?>
+	<?php include '../../Controler/updateCompanies.php' ?>
 
 
 	<H1> <?php echo ($name); ?> </H1> 
 
-<img class="rounded-circle center" alt="100x100" src="<?php echo ($pic); ?>"
-  data-holder-rendered="true">h2 
+<img class="rounded-circle center" alt="100x100" src="<?php echo $picpic; ?>"
+  data-holder-rendered="true">
+
+
 
 	<main>
 		<form method="POST">
@@ -32,7 +34,7 @@
 
 				<div class="form-group">
 					<label for="InputEmailCompanies">Email address</label>
-					<input name="EmailUpdateCompanies" type="email" class="form-control" id="InputEmailCompanies" placeholder="<?php echo ($email); ?>">
+					<input name="EmailUpdateCompanies" type="email" class="form-control" id="InputEmailCompanies" value="<?php echo ($email); ?>">
 				</div>
 				<div class="form-group">
 					<label for="InputName">Name</label>
