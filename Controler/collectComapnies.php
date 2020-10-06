@@ -1,6 +1,20 @@
 <?php
-
+$reqCompanies = $dbh->prepare("SELECT * FROM companies");
+$reqCompanies->execute();
+$resultCompanies = $reqCompanies->fetchAll();
+$bool = false;
 if(isset($_GET['id'])){
+    for($i = 0; $i < $reqCompanies->rowCount(); $i++){
+        if($_GET['id'] == $resultCompanies[$i]['id']){
+            $bool = true;
+            $i = $reqCompanies->rowCount();
+        }else{
+            $bool = false;
+        }
+    }    
+}
+
+if($bool){
     $reqCompanies = $dbh->prepare("SELECT * FROM companies WHERE id= ".$_GET['id']."");
     $reqCompanies->execute();
     $resultCompanies = $reqCompanies->fetchAll();
