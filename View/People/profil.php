@@ -16,8 +16,9 @@
 	if (isset($_COOKIE['id'])) {
 		echo 'Votre ID de session est le ' . $_COOKIE['id'];
 	}
-	?>
 	
+	?>
+
 	<div class="container">
 
 		<?php include 'header.php'; ?>
@@ -28,19 +29,19 @@
 				<div>
 					<div class="form-group">
 						<label for="InputEmail1">Email address</label><i class="fas fa-info-circle"></i>
-						<input name="EmailSignUp" type="email" class="form-control" id="InputEmail1" placeholder="<?php echo ($email); ?>">
+						<input name="EmailUpdate" type="email" class="form-control" id="InputEmail1" placeholder="<?php echo ($email); ?>">
 					</div>
 					<div class="form-group">
 						<label for="InputFirstName">First name</label><i class="fas fa-info-circle"></i>
-						<input name="FirstNameSignUp" type="text" class="form-control" id="InputFirstName" placeholder="<?php echo ($firstName); ?>">
+						<input name="FirstNameUpdate" type="text" class="form-control" id="InputFirstName" placeholder="<?php echo ($firstName); ?>">
 					</div>
 					<div class="form-group">
 						<label for="InputLastName">Last name</label><i class="fas fa-info-circle"></i>
-						<input name="LastNameSignUp" type="text" class="form-control" id="InputLastName" placeholder="<?php echo ($lastName); ?>">
+						<input name="LastNameUpdate" type="text" class="form-control" id="InputLastName" placeholder="<?php echo ($lastName); ?>">
 					</div>
 					<div class="form-group">
 						<label for="inputSex">Sex</label>
-						<select name="SexSignUp" id="inputSex" class="form-control">
+						<select name="SexUpdate" id="inputSex" class="form-control">
 							<option <?php if ($sex['sex'] == 'Male') {
 										echo "selected='selected'";
 									} ?>>Male</option>
@@ -52,23 +53,19 @@
 
 					<div class="form-group">
 						<label for="InputDate">Date of birth</label>
-						<input name="DateSignUp" type="date" class="form-control" id="InputDate" placeholder="<?php echo ($birthDate); ?>">
-					</div>
-					<div class="form-group">
-						<label for="InputTel">Phone number</label><i class="fas fa-info-circle"></i>
-						<input name="TelSignUp" type="tel" class="form-control" id="InputTel" placeholder="<?php echo ($tel); ?>">
-					</div>
+						<input name="DateUpdate" type="date" class="form-control" id="InputDate" value="<?php echo ($birthDate); ?>">
+								</div>
 					<div class="form-group">
 						<label for="inputAddress">Address</label><i class="fas fa-info-circle"></i>
-						<input name="AdressSignUp" type="text" class="form-control" id="inputAddress" placeholder="<?php echo ($adress); ?>"">
+						<input name="AdressUpdate" type="text" class="form-control" id="inputAddress" placeholder="<?php echo ($adress); ?>"">
 						</div>
 						<div class=" form-group">
 						<label for="inputCity">City</label><i class="fas fa-info-circle"></i>
-						<input name="CitySignUp" type="text" class="form-control" id="inputCity" placeholder="<?php echo ($city); ?>"">
+						<input name="CityUpdate" type="text" class="form-control" id="inputCity" placeholder="<?php echo ($city); ?>"">
 						</div>
 						<div class=" form-group">
 						<label for="inputZipCode">Zip Code</label><i class="fas fa-info-circle"></i>
-						<input name="ZipCodeSignUp" type="text" class="form-control" id="inputZipCode" placeholder="<?php echo ($zipCode); ?>">
+						<input name="ZipCodeUpdate" type="text" class="form-control" id="inputZipCode" placeholder="<?php echo ($zipCode); ?>">
 					</div>
 					<div class="form-group">
 						<label for="InputLastPassword">Last password</label><i class="fas fa-info-circle"></i>
@@ -84,7 +81,7 @@
 					</div>
 					<div class="form-group">
 						<label for="InputResume">Your Resume</label>
-						<input name="ResumeSignUp" type="file" class="form-control" id="InputResume" accept="application/pdf">
+						<input name="ResumeUpdate" type="file" class="form-control" id="InputResume" accept="application/pdf">
 					</div>
 				</div>
 				<div>
