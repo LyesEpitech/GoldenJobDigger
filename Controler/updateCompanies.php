@@ -1,5 +1,6 @@
 <?php
 
+include("../View/header.php");
 
 if (isset($_POST['SubmitUpdate'])) {
 	if (isset($_POST['EmailSignUpCompanies']) and isset($_POST['NameSignUp']) and isset($_POST['CitySignUp']) and isset($_POST['Password1SignUp']) and isset($_POST['Password2SignUp']) and isset($_POST['TermsSignUp']) and isset($_POST['DescriptionSignUp'])) {
@@ -130,3 +131,4 @@ if ($error != "") {
 
 
 <?php include 'footer.php'; ?>
+

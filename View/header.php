@@ -22,7 +22,7 @@
 								Find a job
 							</a>
 							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-								<a class="dropdown-item" href="#">Discover offers</a>
+								<a class="dropdown-item" href="ads.php">Discover offers</a>
 								<a class="dropdown-item" href="#">Discover events</a>
 								<div class="dropdown-divider"></div>
 								<a class="dropdown-item" href="#">Advices</a>
@@ -109,10 +109,6 @@
 						<div class="form-group">
 							<label for="InputDate">Date of birth</label>
 							<input name="DateSignUp" type="date" class="form-control" id="InputDate">
-						</div>
-						<div class="form-group">
-							<label for="InputTel">Phone number</label><i class="fas fa-info-circle"></i>
-							<input name="TelSignUp" type="tel" class="form-control" id="InputTel" placeholder="0606060606">
 						</div>
 						<div class="form-group">
 							<label for="inputAddress">Address</label><i class="fas fa-info-circle"></i>

@@ -76,10 +76,6 @@ function showPeople() {
         <input name="DateSignUp" type="date" class="form-control" id="InputDate" >
     </div>
     <div class="form-group">
-        <label for="InputTel">Phone number</label>
-        <input name="TelSignUp" type="tel" class="form-control" id="InputTel" placeholder="0606060606">
-    </div>
-    <div class="form-group">
         <label for="inputAddress">Address</label>
         <input name="AdressSignUp" type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
     </div>

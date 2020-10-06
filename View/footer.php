@@ -11,7 +11,7 @@
 				Find a job
 			</a>
 			<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-				<a class="dropdown-item" href="#">Discover offers</a>
+				<a class="dropdown-item" href="ads.php">Discover offers</a>
 				<a class="dropdown-item" href="#">Discover events</a>
 				<div class="dropdown-divider"></div>
 				<a class="dropdown-item" href="#">Advices</a>
@@ -23,3 +23,4 @@
 		<small>Copyright &copy; Your Website</small>
 	</div>
 </footer>
+

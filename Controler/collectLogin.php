@@ -1,13 +1,12 @@
 <?php
  
 $erreur = "";
-
 if(isset($_POST['SubmitSignIn'])) {
     $mailconnect = $_POST['EmailSignIn'];
     $mdpconnect = $_POST['PasswordSignIn'];
     if(!empty($mailconnect) AND !empty($mdpconnect)) {
         $reqPeople = $dbh->prepare("SELECT * FROM people WHERE email = ? AND password = ?  ");
-        $reqPeople->execute(array($mailconnect, $mdpconnect));
+        $reqPeople->execute(array($mailconnect, hash("sha256", $mdpconnect)));
         $result = $reqPeople->rowCount();
         if($result) {
             $userinfo = $reqPeople->fetch();
@@ -15,7 +14,7 @@ if(isset($_POST['SubmitSignIn'])) {
             setcookie('role', $userinfo["role"], time()+3600*24,"/");
         } else {
             $reqCompanies = $dbh->prepare("SELECT * FROM companies WHERE email = ? AND password = ? ");
-            $reqCompanies->execute(array($mailconnect, $mdpconnect));
+            $reqCompanies->execute(array($mailconnect, hash("sha256", $mdpconnect)));
             $result = $reqCompanies->rowCount();
             if($result) {
                 $userinfo = $reqCompanies->fetch();

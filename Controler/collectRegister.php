@@ -106,8 +106,6 @@ if (isset($_POST['SubmitSignUp']) AND isset($_POST['EmailSignUpCompanies'])) {
 					$regex = "/[a-zA-Z0-9]{8,}$/";
 					if (preg_match($regex, $password1)) {
 						if ($password1 == $password2) {
-							$password1 = hash("sha256", $password1);
-							$password2 = hash("sha256", $password2);
 							$uploaddir = '../Files/pics/';
 							$uploadfile = $uploaddir . basename($email . $_FILES['PicSignUp']['name']);
 							if ($_FILES["PicSignUp"]["type"] == "image/jpg" or $_FILES["PicSignUp"]["type"] == "image/png" or $_FILES["PicSignUp"]["type"] == "image/jpeg" or $_FILES["PicSignUp"]["type"] == "image/gif") {

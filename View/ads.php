@@ -15,9 +15,7 @@
 		<?php include 'header.php';?>
 
 		<main>
-			<?php include 'actusHome.php';?> 
-			<?php include 'companiesHome.php';?>
-			<?php include 'jobsHome.php';?>	
+			<?php include '../Controler/collectAds.php'; ?>	
 		</main>
 		
 			<?php include 'footer.php';?>
