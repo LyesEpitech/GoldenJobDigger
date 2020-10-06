@@ -32,19 +32,19 @@
 
 				<div class="form-group">
 					<label for="InputEmailCompanies">Email address</label>
-					<input name="EmailSignUpCompanies" type="email" class="form-control" id="InputEmailCompanies" placeholder="<?php echo ($email); ?>">
+					<input name="EmailUpdateCompanies" type="email" class="form-control" id="InputEmailCompanies" placeholder="<?php echo ($email); ?>">
 				</div>
 				<div class="form-group">
 					<label for="InputName">Name</label>
-					<input name="NameSignUp" type="text" class="form-control" id="InputName" placeholder="<?php echo ($name); ?>">
+					<input name="NameUpdate" type="text" class="form-control" id="InputName" placeholder="<?php echo ($name); ?>">
 				</div>
 				<div class="form-group">
 					<label for="InputDescription">Descr</label>
-					<input name="DescriptionSignUp" type="textarea" class="form-control" id="InputDescription" placeholder="<?php echo ($description); ?>">
+					<input name="DescriptionUpdate" type="textarea" class="form-control" id="InputDescription" placeholder="<?php echo ($description); ?>">
 				</div>
 				<div class="form-group">
 					<label for="inputCity">City</label>
-					<input name="CitySignUp" type="text" class="form-control" id="inputCity" placeholder="<?php echo ($city); ?>">
+					<input name="CityUpdate" type="text" class="form-control" id="inputCity" placeholder="<?php echo ($city); ?>">
 				</div>
 				<div class="form-group">
 					<label for="InputLastPassword">Last password</label><i class="fas fa-info-circle"></i>
@@ -60,7 +60,7 @@
 				</div>
 				<div class="form-group">
 					<label for="InputPic">Your Pic</label>
-					<input name="PicSignUp" type="file" class="form-control" id="InputPic" accept="image/">
+					<input name="PicUpdate" type="file" class="form-control" id="InputPic" accept="image/">
 				</div>
 				<div>
 					<button name="SubmitUpdate" type="submit" class="btn btn-primary">Update</button>

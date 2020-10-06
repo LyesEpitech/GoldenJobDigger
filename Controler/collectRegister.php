@@ -35,8 +35,6 @@ if (isset($_POST['SubmitSignUp']) AND isset($_POST['EmailSignUp'])) {
 									$regex = "/[a-zA-Z0-9]{8,}$/";
 									if (preg_match($regex, $password1)) {
 										if ($password1 == $password2) {
-											$password1 = hash("sha256", $password1);
-											$password2 = hash("sha256", $password2);
 											$uploaddir = '../Files/resumes/';
 											$uploadfile = $uploaddir . basename($email . $_FILES['ResumeSignUp']['name']);
 											if ($_FILES["ResumeSignUp"]["type"] == "application/pdf") {
