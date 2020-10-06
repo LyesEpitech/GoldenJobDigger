@@ -4,51 +4,11 @@ include 'connexion.php';
 
 /*photo*/
 
-
-$reqCompanies = $dbh->prepare("SELECT photo FROM companies");
-$reqCompanies->execute();
-$resultCompanies = $reqCompanies->fetchAll();
-$bool = false;
-
-
-if (isset($GET['id'])) {
-	for ($i = 0; $i < $reqCompanies->rowCount(); $i++) {
-		if ($_GET['id'] == $resultCompanies[$i]['id']) {
-			$bool = true;
-			$i = $reqCompanies->rowCount();
-		} else {
-			$bool = false;
-		}
-	}
-}
-
-
-if ($bool) {
-    $reqCompanies = $dbh->prepare("SELECT * FROM companies WHERE id= " . $_GET['id'] . "");
-    $reqCompanies->execute();
-    $resultCompanies = $reqCompanies->fetchAll();
-    $companiesPics = $resultCompanies[0]["photo"];
-  
-} else {
-    $reqCompanies = $dbh->prepare("SELECT * FROM companies");
-    $reqCompanies->execute();
-    for ($i = 0; $i < $reqCompanies->rowCount(); $i++) {
-        $reqCompanies = $dbh->prepare("SELECT * FROM companies");
-        $reqCompanies->execute();
-        $resultCompanies = $reqCompanies->fetchAll();
-        $companiesPics =  $resultCompanies[0]["photo"];
-        
-    }
-
-}
-
-
-
-
-
-
-
-
+    $reqCompanies = $dbh->prepare("SELECT * FROM companies WHERE id= ?");
+    $reqCompanies->execute($_COOKIE['id']);
+	$resultCompanies = $reqCompanies->fetchAll();
+	$companiesPics =  $resultCompanies[0]["email"] . $resultCompanies[0]["photo"];
+	<img src="../Files/pics/".$companiesPics."">
 
 
 $reqCompanies = $dbh->prepare("SELECT * FROM companies WHERE id = ?");
