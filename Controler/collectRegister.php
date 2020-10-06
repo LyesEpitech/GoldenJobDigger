@@ -41,7 +41,6 @@ if (isset($_POST['SubmitSignUp']) AND isset($_POST['EmailSignUp'])) {
 												if ($_FILES["ResumeSignUp"]["size"] < 10000000) {
 													if (move_uploaded_file($_FILES['ResumeSignUp']['tmp_name'], $uploadfile)) {
 														$count = $request = $dbh->exec('INSERT INTO people (`email`, `password`, `prenom`, `nom`, `date_naissance`, `adresse`, `code_postal`, `ville`, `resume`) VALUES (' . $dbh->quote($email) . ', ' . $dbh->quote($password1) . ', ' . $dbh->quote($firstName) . ', ' . $dbh->quote($lastName) . ', ' . $dbh->quote($birthDate) . ', ' . $dbh->quote($adress) . ', ' . $dbh->quote($zipCode) . ', ' . $dbh->quote($city) . ', ' . $dbh->quote($resume['name']) . ')');
-														print_r($count);
 													} else {
 														$error = "Error in files upload.";
 													}

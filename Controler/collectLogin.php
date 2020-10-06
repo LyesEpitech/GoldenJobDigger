@@ -5,7 +5,7 @@ if(isset($_POST['SubmitSignIn'])) {
     $mailconnect = $_POST['EmailSignIn'];
     $mdpconnect = $_POST['PasswordSignIn'];
     if(!empty($mailconnect) AND !empty($mdpconnect)) {
-        $reqPeople = $dbh->prepare("SELECT * FROM people WHERE email = ? AND password = ?  ");
+        $reqPeople = $dbh->prepare("SELECT * FROM people WHERE email = ? AND password = ?");
         $reqPeople->execute(array($mailconnect, hash("sha256", $mdpconnect)));
         $result = $reqPeople->rowCount();
         if($result) {

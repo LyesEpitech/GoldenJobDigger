@@ -2,6 +2,7 @@
 $reqAds = $dbh->prepare("SELECT * FROM ads");
 $reqAds->execute();
 $resultAds = $reqAds->fetchAll();
+$bool = false;
 if(isset($_GET['id'])){
     for($i = 0; $i < $reqAds->rowCount(); $i++){
         if($_GET['id'] == $resultAds[$i]['id']){
@@ -12,6 +13,7 @@ if(isset($_GET['id'])){
         }
     }
 }
+
 if($bool){
     $reqAds = $dbh->prepare("SELECT * FROM ads WHERE id= ".$_GET['id']."");
     $reqAds->execute();
