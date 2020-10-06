@@ -4,15 +4,6 @@ include 'connexion.php';
 
 
 
-    /*$reqPic = $dbh->prepare("SELECT photo FROM companies WHERE id = ?");
-    $reqPic->execute($_COOKIE['id']);
-	$picpic = $reqPic->fetch();
-
-	$photo = $picpic; */
-
-
-
-
 	$reqCompanies = $dbh->prepare("SELECT * FROM companies WHERE id = ?");
     $reqCompanies->execute(array($_COOKIE['id']));
 	$result = $reqCompanies->fetchAll();
