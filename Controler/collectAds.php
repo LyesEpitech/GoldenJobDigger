@@ -22,6 +22,7 @@ if($bool){
     $description = $resultAds[0]['description'];
     $idAds = $resultAds[0]['id'];
     $idCompanies = $resultAds[0]['companies_id'];
+    
     $reqCompanies = $dbh->prepare("SELECT * FROM companies WHERE id = $idCompanies");
     $reqCompanies->execute();
     $resultCompanies = $reqCompanies->fetchAll();

@@ -22,7 +22,7 @@
 
 	<H1> <?php echo ($name); ?> </H1> 
 
-<img class="rounded-circle center" alt="100x100" src="<?php echo $picpic; ?>"
+<img class="rounded-circle center" alt="100x100" src="<?php echo $companiesPics; ?>"
   data-holder-rendered="true">
 
 
