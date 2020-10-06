@@ -1,4 +1,4 @@
-<?php include '../../Model/connexion.php' ?>
+<?php include '../../Model/connexion.php'; ?>
 <!DOCTYPE html>
 
 <html lang="fr">
@@ -27,7 +27,7 @@
 
 	<div class="container">
 
-		<?php include 'header.php'; ?>
+		<?php include '../header.php'; ?>
 		<?php include '../../Controler/updatePeople.php' ?>
 
 		<main>
@@ -96,7 +96,7 @@
 			</form>
 		</main>
 
-		<?php include 'footer.php'; ?>
+		<?php include '../footer.php'; ?>
 
 
 
