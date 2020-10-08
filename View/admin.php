@@ -12,10 +12,10 @@
 </head>
 <body>
 	<div class="container">
-		<?php include 'header.php';?>
+        <?php include 'header.php';?>
 
 		<main>
-			<?php include '../Controler/collectActus.php'; ?>	
+		<?php include '../Controler/adminUpdate.php';?>
 		</main>
 		
 			<?php include 'footer.php';?>

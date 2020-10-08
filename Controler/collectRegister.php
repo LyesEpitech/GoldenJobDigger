@@ -21,7 +21,10 @@ if (isset($_POST['SubmitSignUp']) AND isset($_POST['EmailSignUp'])) {
 		$request = $dbh->prepare('SELECT email FROM People WHERE email=?');
 		$request->execute(array($dbh->quote($email)));
 		$result = $request->fetchAll();
-		if (filter_var($email, FILTER_VALIDATE_EMAIL) and !isset($result[0])) {
+		$request2 = $dbh->prepare('SELECT email FROM Companies WHERE email=?');
+		$request2->execute(array($dbh->quote($email)));
+		$result2 = $request2->fetchAll();
+		if (filter_var($email, FILTER_VALIDATE_EMAIL) and !isset($result[0]) and !isset($result2[0])) {
 			$regex = "/[a-zA-Z]{3,30}$/";
 			if (preg_match($regex, $firstName)) {
 				if (preg_match($regex, $lastName)) {

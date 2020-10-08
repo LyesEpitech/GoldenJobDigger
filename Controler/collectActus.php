@@ -5,7 +5,6 @@ $json = json_decode(file_get_contents('http://newsapi.org/v2/everything?q=entrep
 <?php
 $i = 0;
 foreach ($json->articles as $News) {
-	if($i < 3){
     if ($i % 3 == 0) { ?>
         <div class="card-group">
             <div class="card">
@@ -32,6 +31,6 @@ foreach ($json->articles as $News) {
         </div> <?php
             }
             $i++;
-        }}
+        }
                 ?>
 </div>
