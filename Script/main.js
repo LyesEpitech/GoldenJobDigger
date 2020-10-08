@@ -116,3 +116,6 @@ if ((document.cookie).includes("id")) {
 function redirect(){
     window.location.replace("../Controler/deconnexion.php");
 }
+
+
+document.body.style.backgroundImage = "url('../nuage.jpg')";

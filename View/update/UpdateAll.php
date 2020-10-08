@@ -24,18 +24,32 @@
 	}
 	
 	?>
+ 
+ <?php
 
-	<div class="container">
+ if (isset($_COOKIE['role'])) {
+		echo 'Votre ID de session est le ' . $_COOKIE['id'];
+	}
+	
+
+	?>
+
+   <?php 
+    if($_COOKIE['role' ] == 'p'){
+		
+		include '../../Controler/updatePeople.php'?>
+			   
+		<div class="container">
 
 		<?php include '../header.php'; ?>
-		<?php include '../../Controler/updatePeople.php' ?>
+		
 
 		<main>
 			<form method="POST">
 				<div>
 					<div class="form-group">
 						<label for="InputEmail1">Email address</label><i class="fas fa-info-circle"></i>
-						<input name="EmailUpdate" type="email" class="form-control" id="InputEmail1" placeholder="<?php echo ($email); ?>">
+						<input name="EmailUpdatePeople" type="email" class="form-control" id="InputEmail1" placeholder="<?php echo ($email); ?>">
 					</div>
 					<div class="form-group">
 						<label for="InputFirstName">First name</label><i class="fas fa-info-circle"></i>
@@ -59,11 +73,11 @@
 
 					<div class="form-group">
 						<label for="InputDate">Date of birth</label>
-						<input name="DateUpdate" type="date" class="form-control" id="InputDate" value="<?php echo ($birthDate); ?>">
+						<input name="naissanceUpdate" type="date" class="form-control" id="InputDate" value="<?php echo ($dateNaissance); ?>">
 								</div>
 					<div class="form-group">
 						<label for="inputAddress">Address</label><i class="fas fa-info-circle"></i>
-						<input name="AdressUpdate" type="text" class="form-control" id="inputAddress" placeholder="<?php echo ($adress); ?>"">
+						<input name="AdressUpdate" type="text" class="form-control" id="inputAddress" placeholder="<?php echo ($adresse); ?>"">
 						</div>
 						<div class=" form-group">
 						<label for="inputCity">City</label><i class="fas fa-info-circle"></i>
@@ -71,7 +85,7 @@
 						</div>
 						<div class=" form-group">
 						<label for="inputZipCode">Zip Code</label><i class="fas fa-info-circle"></i>
-						<input name="ZipCodeUpdate" type="text" class="form-control" id="inputZipCode" placeholder="<?php echo ($zipCode); ?>">
+						<input name="postalUpdate" type="text" class="form-control" id="inputZipCode" placeholder="<?php echo ($postal); ?>">
 					</div>
 					<div class="form-group">
 						<label for="InputLastPassword">Last password</label><i class="fas fa-info-circle"></i>
@@ -96,6 +110,76 @@
 			</form>
 		</main>
 
+
+
+
+
+
+			<?php }     ?>
+
+		<?php 	if($_COOKIE['role' ] == 'c'){ 
+			
+			 include '../../Controler/updateCompanies.php' ?>
+
+
+			<H1> <?php echo ($name); ?> </H1> 
+
+<img class="rounded-circle center" alt="100x100" src="<?php echo $companiesPics; ?>"
+  data-holder-rendered="true">
+
+
+
+	<main>
+		<form method="POST">
+			<div>
+
+
+				<div class="form-group">
+					<label for="InputEmailCompanies">Email address</label>
+					<input name="EmailUpdateCompanies" type="email" class="form-control" id="InputEmailCompanies" value="<?php echo ($email); ?>">
+				</div>
+				<div class="form-group">
+					<label for="InputName">Name</label>
+					<input name="NameUpdate" type="text" class="form-control" id="InputName" placeholder="<?php echo ($name); ?>">
+				</div>
+				<div class="form-group">
+					<label for="InputDescription">Descr</label>
+					<input name="DescriptionUpdate" type="textarea" class="form-control" id="InputDescription" placeholder="<?php echo ($description); ?>">
+				</div>
+				<div class="form-group">
+					<label for="inputCity">City</label>
+					<input name="CityUpdate" type="text" class="form-control" id="inputCity" placeholder="<?php echo ($city); ?>">
+				</div>
+				<div class="form-group">
+					<label for="InputLastPassword">Last password</label><i class="fas fa-info-circle"></i>
+					<input name="LastPassword" type="password" class="form-control" id="InputLastPassword" placeholder="p@sSw0rd">
+				</div>
+				<div class="form-group">
+					<label for="InputNewPassword1">New password</label><i class="fas fa-info-circle"></i>
+					<input name="NewPassword1" type="password" class="form-control" id="InputNewPassword1" placeholder="p@sSw0rd">
+				</div>
+				<div class="form-group">
+					<label for="InputNewPassword2">Confirm new password</label><i class="fas fa-info-circle"></i>
+					<input name="NewPassword2" type="password" class="form-control" id="NewPassword2" placeholder="p@sSw0rd">
+				</div>
+				<div class="form-group">
+					<label for="InputPic">Your Pic</label>
+					<input name="PicUpdate" type="file" class="form-control" id="InputPic" accept="image/">
+				</div>
+				<div>
+					<button name="SubmitUpdate" type="submit" class="btn btn-primary">Update</button>
+				</div>
+
+
+			</div>
+	</main>
+</div>
+
+		<?php	} ?>
+
+			
+
+   
 		<?php include '../footer.php'; ?>
 
 
