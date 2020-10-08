@@ -8,7 +8,7 @@ include 'connexion.php';
     $reqCompanies->execute($_COOKIE['id']);
 	$resultCompanies = $reqCompanies->fetchAll();
 	$companiesPics =  $resultCompanies[0]["email"] . $resultCompanies[0]["photo"];
-	<img src="../Files/pics/".$companiesPics."">
+	//<img src="../Files/pics/".$companiesPics."">
 
 
 $reqCompanies = $dbh->prepare("SELECT * FROM companies WHERE id = ?");
@@ -35,7 +35,6 @@ if (isset($_POST['SubmitUpdate']) and isset($_POST['EmailUpdateCompanies'])) {
 		$city = $_POST['CityUpdate'];
 		$password1 = hash("sha256", $_POST['Password1Update']);
 		$password2 = hash("sha256", $_POST['Password2Update']);
-		$terms = $_POST['TermsUpdate'];
 		$pic = $_FILES['PicUpdate'];
 		$request = $dbh->prepare('SELECT email FROM Companies WHERE email=?');
 		$request->execute(array($dbh->quote($email)));

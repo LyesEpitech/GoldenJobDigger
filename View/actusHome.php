@@ -8,21 +8,21 @@ foreach ($json->articles as $News) {
 	if($i < 3){
     if ($i % 3 == 0) { ?>
         <div class="card-group">
-            <div class="card">
+            <div class="card bg-warning">
                 <img class="card-img-top" src="<?php echo $News->urlToImage ?>" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title"><?php echo $News->title ?></h5>
-                    <p class="card-text"><?php echo $News->content ?></p><a href="<?php echo $News->url ?>" class="btn btn-primary">View article</a>
+                    <p class="card-text"><?php echo $News->content ?></p><a href="<?php echo $News->url ?>" class="btn btn-light">View article</a>
                     <p class="card-text"><?php echo $News->author ?></br>Published <?php echo $News->publishedAt ?></p>
                 </div>
             </div>
         <?php } else {
         ?>
-            <div class="card">
+            <div class="card bg-warning">
                 <img class="card-img-top" src="<?php echo $News->urlToImage ?>" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title"><?php echo $News->title ?></h5>
-                    <p class="card-text"><?php echo $News->content ?></p><a href="<?php echo $News->url ?>" class="btn btn-primary">View article</a>
+                    <p class="card-text"><?php echo $News->content ?></p><a href="<?php echo $News->url ?>" class="btn btn-lightfuu">View article</a>
                     <p class="card-text"><?php echo $News->author ?></br>Published <?php echo $News->publishedAt ?></p>
                 </div>
             </div>

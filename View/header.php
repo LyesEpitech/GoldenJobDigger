@@ -3,8 +3,8 @@
 	<div class="row heade sticky-top">
 
 		<div class="col-sm-12">
-			<nav class="navbar navbar-expand-lg navbar-light bg-light">
-				<a class="navbar-brand" href="home.php">Home</a>
+			<nav class="navbar navbar-expand-lg navbar-light bg-white">
+				<img  alt="logo" src ="../golden.png"> 
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
 				</button>
