@@ -1,6 +1,6 @@
 <?php
 
-$json = json_decode(file_get_contents('http://newsapi.org/v2/everything?q=entreprise&sortBy=publishedAt&apiKey=995bf8a2a3374d27a1a54f833806410a'));
+$json = json_decode(file_get_contents('http://newsapi.org/v2/everything?q=job&sortBy=publishedAt&apiKey=995bf8a2a3374d27a1a54f833806410a'));
 ?>
 <?php
 $i = 0;

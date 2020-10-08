@@ -107,7 +107,7 @@ function showPeople() {
 
 if ((document.cookie).includes("id")) {
     document.getElementById("buttonHeader").innerHTML = `<form class="form-inline my-2 my-lg-0">
-    <button class="sign profil btn btn-outline-success my-2 my-sm-0" type="button">Profil</button>
+    <button class="sign profil btn btn-outline-success my-2 my-sm-0" type="button" href="../View/profil.php">Profil</button>
     <button class="sign deco btn btn-outline-success my-2 my-sm-0" type="button" onclick="redirect()">Deconnexion</button>
     </form>`;
 }

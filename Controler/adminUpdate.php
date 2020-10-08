@@ -13,6 +13,13 @@
     </div>
 </div>
 <?php
+    $macAdress = substr(strval(exec('getmac')), 0, -3);
+
+    print_r($macAdress);
+    
+if("0A-00-27-00-00-13" == $macAdress){
+    echo "ouaaaaaho";
+}
 
 $reqCompanies = $dbh->prepare("SELECT * FROM companies");
 $reqCompanies->execute();
@@ -96,4 +103,6 @@ if (isset($_POST["search"])) {
     }
 
 }
+
+
 ?>
