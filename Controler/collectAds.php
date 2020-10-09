@@ -58,8 +58,11 @@ if($bool){
                             <div class="card-body">
                                 <h5 class="card-title">'.$title.'</h5> 
                                 <p class="card-text">'.$description.'</p>
-                                <a href="../View/ads.php?id='.$idAds.'" class="btn btn-primary">More information</a></br>
+                                <a id="button'.$i.'" onclick="learnMore('.$i.')" class="btn btn-primary">Show more</a></br>
                                 <a href="../View/companies.php?id='.$idCompanies.'"><small>'.$companiesName.'</small><img src="../Files/pics/'.$companiesPics.'" width="50" height="50"></a>
+                                <div id="learnMore'.$i.'">
+
+                </div>
                             </div>
                         </div>
                     </div>
@@ -68,5 +71,10 @@ if($bool){
     echo '</div>';
 }
 
-
-?>
+// description, (missions à effectuer , experience )
+// date debut ,
+// type de poste (cdi , cdd , alternance , stage ) select
+// date de l'annonce
+// niveau de diplome requis (bac +1 ,2 ,3 ,4 ,5)
+// competences recherchés string ,
+// domaines SELECT 

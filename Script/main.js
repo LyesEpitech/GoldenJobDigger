@@ -118,4 +118,20 @@ function redirect(){
 }
 
 
-document.body.style.backgroundImage = "url('../nuage.jpg')";
+
+
+function learnMore(nb){
+    var learnMore = document.getElementById("learnMore" + nb);
+    var button = document.getElementById("button" + nb);
+    if(button.innerHTML == "Show more"){
+        button.innerHTML = "Show less";
+        learnMore.innerHTML = ` <h5 class="card-header">Titre</h5>
+        <div class="card-body">
+            <p class="card-text">Description</p>
+            <small>Name of companie</small><img src="../Files/pics/'.$companiesPics.'" width="50" height="50">
+        </div>`
+    }else{
+        button.innerHTML = "Show more";
+        learnMore.innerHTML = ""
+    }
+}

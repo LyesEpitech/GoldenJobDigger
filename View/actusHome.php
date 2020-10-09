@@ -12,7 +12,7 @@ foreach ($json->articles as $News) {
                 <img class="card-img-top" src="<?php echo $News->urlToImage ?>" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title"><?php echo $News->title ?></h5>
-                    <p class="card-text"><?php echo $News->content ?></p><a href="<?php echo $News->url ?>" class="btn btn-light">View article</a>
+                    <p class="card-text"><?php echo $News->content ?></p><a target="_blank" href="<?php echo $News->url ?>" class="btn btn-light">View article</a>
                     <p class="card-text"><?php echo $News->author ?></br>Published <?php echo $News->publishedAt ?></p>
                 </div>
             </div>
@@ -22,7 +22,7 @@ foreach ($json->articles as $News) {
                 <img class="card-img-top" src="<?php echo $News->urlToImage ?>" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title"><?php echo $News->title ?></h5>
-                    <p class="card-text"><?php echo $News->content ?></p><a href="<?php echo $News->url ?>" class="btn btn-lightfuu">View article</a>
+                    <p class="card-text"><?php echo $News->content ?></p><a target="_blank" href="<?php echo $News->url ?>" class="btn btn-light">View article</a>
                     <p class="card-text"><?php echo $News->author ?></br>Published <?php echo $News->publishedAt ?></p>
                 </div>
             </div>

@@ -1,9 +1,5 @@
 
 		<?php
-
-		include 'connexion.php';
-		
-		
 			$reqPeople = $dbh->prepare("SELECT * FROM people WHERE id= ?");
 			$reqPeople->execute($_COOKIE['id']);
 			$resultPeople = $reqPeople->fetchAll();

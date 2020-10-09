@@ -1,11 +1,9 @@
 <?php
 
-include 'connexion.php';
-
 /*photo*/
 
     $reqCompanies = $dbh->prepare("SELECT * FROM companies WHERE id= ?");
-    $reqCompanies->execute($_COOKIE['id']);
+    $reqCompanies->execute(array($_COOKIE['id']));
 	$resultCompanies = $reqCompanies->fetchAll();
 	$companiesPics =  $resultCompanies[0]["email"] . $resultCompanies[0]["photo"];
 	//<img src="../Files/pics/".$companiesPics."">
