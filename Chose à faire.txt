@@ -2,9 +2,3 @@ Principaux
 1. Profil (User, Companies)
 2. Interface admin
 3. Formulaire ads dans 
-
-
-
-Secondaire 
-1. google news api
-2. Redirection sur modal quand erreur dans form 

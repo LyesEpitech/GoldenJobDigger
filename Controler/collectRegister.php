@@ -35,7 +35,7 @@ if (isset($_POST['SubmitSignUp']) AND isset($_POST['EmailSignUp'])) {
 									$regex = "/[a-zA-Z0-9]{8,}$/";
 									if (preg_match($regex, $password1)) {
 										if ($password1 == $password2) {
-											$uploaddir = '../Files/resumes/';
+											$uploaddir = '../Files/';
 											$uploadfile = $uploaddir . basename($email . $_FILES['ResumeSignUp']['name']);
 											if ($_FILES["ResumeSignUp"]["type"] == "application/pdf") {
 												if ($_FILES["ResumeSignUp"]["size"] < 10000000) {
@@ -100,13 +100,12 @@ if (isset($_POST['SubmitSignUp']) AND isset($_POST['EmailSignUpCompanies'])) {
 					$regex = "/[a-zA-Z0-9]{8,}$/";
 					if (preg_match($regex, $password1)) {
 						if ($password1 == $password2) {
-							$uploaddir = '../Files/pics/';
+							$uploaddir = '../Files/';
 							$uploadfile = $uploaddir . basename($email . $_FILES['PicSignUp']['name']);
 							if ($_FILES["PicSignUp"]["type"] == "image/jpg" or $_FILES["PicSignUp"]["type"] == "image/png" or $_FILES["PicSignUp"]["type"] == "image/jpeg" or $_FILES["PicSignUp"]["type"] == "image/gif") {
 								if ($_FILES["PicSignUp"]["size"] < 1000000) {
 									if (move_uploaded_file($_FILES['PicSignUp']['tmp_name'], $uploadfile)) {
 										$count = $request = $dbh->exec('INSERT INTO companies (`email`, `password`, `name`, `description`, `ville`, `photo`) VALUES (' . $dbh->quote($email) . ', ' . $dbh->quote($password1) . ', ' . $dbh->quote($name) . ',' . $dbh->quote($description) . ', ' . $dbh->quote($city) . ',' . $dbh->quote($pic['name']) . ')');
-										print_r($count);
 									} else {
 										$error = "Error in files upload.";
 									}

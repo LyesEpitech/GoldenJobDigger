@@ -105,9 +105,20 @@ function showPeople() {
     </div>`
 }
 
-if ((document.cookie).includes("id")) {
+if ((document.cookie).includes("p")) {
     document.getElementById("buttonHeader").innerHTML = `<form class="form-inline my-2 my-lg-0">
-    <button class="sign profil btn btn-outline-success my-2 my-sm-0" type="button" href="../View/profil.php">Profil</button>
+    <button class="sign profil btn btn-outline-success my-2 my-sm-0" type="button" onclick="window.location.href='../View/profil.php'">Profil</button>
+    <button class="sign deco btn btn-outline-success my-2 my-sm-0" type="button" onclick="redirect()">Deconnexion</button>
+    </form>`;
+}else if((document.cookie).includes("a")){
+    document.getElementById("buttonHeader").innerHTML = `<form class="form-inline my-2 my-lg-0">
+    <button class="sign profil btn btn-outline-success my-2 my-sm-0" type="button" onclick="window.location.href='../View/admin.php'">Admin Panel</button>
+    <button class="sign deco btn btn-outline-success my-2 my-sm-0" type="button" onclick="redirect()">Deconnexion</button>
+    </form>`;
+}else if((document.cookie).includes("c")){
+    document.getElementById("buttonHeader").innerHTML = `<form class="form-inline my-2 my-lg-0">
+    <button class="sign profil btn btn-outline-success my-2 my-sm-0" type="button" onclick="window.location.href='../View/addAds.php'">Add Ads</button>
+    <button class="sign profil btn btn-outline-success my-2 my-sm-0" type="button" onclick="window.location.href='../View/profil.php'">Profil</button>
     <button class="sign deco btn btn-outline-success my-2 my-sm-0" type="button" onclick="redirect()">Deconnexion</button>
     </form>`;
 }
@@ -134,4 +145,21 @@ function learnMore(nb){
         button.innerHTML = "Show more";
         learnMore.innerHTML = ""
     }
+}
+
+var skills = [];
+function addSkill(){
+    var showSkills = document.getElementById("showSkills");
+    var skill = document.getElementById("InputSkills").value;
+    skills.push(skill);
+    showSkills.innerHTML = "";  
+    for(i = 0; i < skills.length; i++){
+        if(i==0){
+            showSkills.innerHTML += skills[i];
+        }else{
+            showSkills.innerHTML += ", " +skills[i];
+        }
+    }
+    document.getElementById("InputSkills").value = "";
+    console.log(skills);
 }
