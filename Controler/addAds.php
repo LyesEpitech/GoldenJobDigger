@@ -17,10 +17,19 @@ echo '<form method="POST" enctype="multipart/form-data">
         <label for="InputSkills">Skills</label><i class="fas fa-info-circle"></i>
         <input name="skills" type="text" class="form-control" id="InputSkills" placeholder="Some skill">
         <button type="button" class="btn btn-secondary" onclick="addSkill()">Add</button>
+        <div class="form-group" id="showSkills">
+        </div>
+        <input style="display:none;" name="skillsList" value="" type="text" class="form-control" id="InputSkillsList">
     </div>
     <div class="form-group">
-    <p id="showSkills"></p>
+        <label for="InputDomains">Domains</label><i class="fas fa-info-circle"></i>
+        <input name="Domains" type="text" class="form-control" id="InputDomains" placeholder="Job Domain">
+        <button type="button" class="btn btn-secondary" onclick="addDomain()">Add</button>
+        <div class="form-group" id="showDomains">
+        </div>
+        <input style="display:none;" name="DomainsList" value="" type="text" class="form-control" id="InputDomainsList">
     </div>
+
     <div class="form-group">
         <label for="inputLevel">Job Type</label>
         <select name="level" id="inputLevel" class="form-control">

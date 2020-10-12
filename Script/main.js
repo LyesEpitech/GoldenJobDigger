@@ -110,12 +110,12 @@ if ((document.cookie).includes("p")) {
     <button class="sign profil btn btn-outline-success my-2 my-sm-0" type="button" onclick="window.location.href='../View/profil.php'">Profil</button>
     <button class="sign deco btn btn-outline-success my-2 my-sm-0" type="button" onclick="redirect()">Deconnexion</button>
     </form>`;
-}else if((document.cookie).includes("a")){
+} else if ((document.cookie).includes("a")) {
     document.getElementById("buttonHeader").innerHTML = `<form class="form-inline my-2 my-lg-0">
     <button class="sign profil btn btn-outline-success my-2 my-sm-0" type="button" onclick="window.location.href='../View/admin.php'">Admin Panel</button>
     <button class="sign deco btn btn-outline-success my-2 my-sm-0" type="button" onclick="redirect()">Deconnexion</button>
     </form>`;
-}else if((document.cookie).includes("c")){
+} else if ((document.cookie).includes("c")) {
     document.getElementById("buttonHeader").innerHTML = `<form class="form-inline my-2 my-lg-0">
     <button class="sign profil btn btn-outline-success my-2 my-sm-0" type="button" onclick="window.location.href='../View/addAds.php'">Add Ads</button>
     <button class="sign profil btn btn-outline-success my-2 my-sm-0" type="button" onclick="window.location.href='../View/profil.php'">Profil</button>
@@ -124,42 +124,74 @@ if ((document.cookie).includes("p")) {
 }
 
 
-function redirect(){
+function redirect() {
     window.location.replace("../Controler/deconnexion.php");
 }
 
 
 
 
-function learnMore(nb){
+function learnMore(nb) {
     var learnMore = document.getElementById("learnMore" + nb);
     var button = document.getElementById("button" + nb);
-    if(button.innerHTML == "Show more"){
+    if (button.innerHTML == "Show more") {
         button.innerHTML = "Show less";
         learnMore.innerHTML = ` <h5 class="card-header">Titre</h5>
         <div class="card-body">
             <p class="card-text">Description</p>
             <small>Name of companie</small><img src="../Files/pics/'.$companiesPics.'" width="50" height="50">
         </div>`
-    }else{
+    } else {
         button.innerHTML = "Show more";
         learnMore.innerHTML = ""
     }
 }
 
 var skills = [];
-function addSkill(){
+
+function addSkill() {
     var showSkills = document.getElementById("showSkills");
     var skill = document.getElementById("InputSkills").value;
-    skills.push(skill);
-    showSkills.innerHTML = "";  
-    for(i = 0; i < skills.length; i++){
-        if(i==0){
-            showSkills.innerHTML += skills[i];
-        }else{
-            showSkills.innerHTML += ", " +skills[i];
+    var SkillsList = document.getElementById("InputSkillsList")
+    
+    if (skill != "") {
+        skills.push(skill);
+        showSkills.innerHTML = "";
+        for (i = 0; i < skills.length; i++) {
+            showSkills.innerHTML += "<div class='skill' id='skill" + i + "' style='display:inline-block;margin: 5px;'> " + skills[i] + " <a onclick='removeSkill(" + i + ")'><i class='far fa-trash-alt'></i></a></div>";
+            SkillsList.value = skills.toString();
         }
+        document.getElementById("InputSkills").value = "";
     }
-    document.getElementById("InputSkills").value = "";
-    console.log(skills);
+}
+
+function removeSkill(index) {
+    var SkillsList = document.getElementById("InputSkillsList")
+    document.getElementById("skill" + index).remove();
+    skills.splice(index, 1);
+    SkillsList.value = skills.toString();
+}
+
+var Domains = [];
+function addDomain() {
+    var showDomains = document.getElementById("showDomains");
+    var Domain = document.getElementById("InputDomains").value;
+    var DomainsList = document.getElementById("InputDomainsList")
+    
+    if (Domain != "") {
+        Domains.push(Domain);
+        showDomains.innerHTML = "";
+        for (i = 0; i < Domains.length; i++) {
+            showDomains.innerHTML += "<div class='Domain' id='Domain" + i + "' style='display:inline-block;margin: 5px;'> " + Domains[i] + " <a onclick='removeDomain(" + i + ")'><i class='far fa-trash-alt'></i></a></div>";
+            DomainsList.value = Domains.toString();
+        }
+        document.getElementById("InputDomains").value = "";
+    }
+}
+
+function removeDomain(index) {
+    var DomainsList = document.getElementById("InputDomainsList")
+    document.getElementById("Domain" + index).remove();
+    Domains.splice(index, 1);
+    DomainsList.value = Domains.toString();
 }
