@@ -1,4 +1,3 @@
-Principaux
-1. Profil (User, Companies)
-2. Interface admin
-3. Formulaire ads dans 
+1. Postuler au offre. job application
+2. Delete dans admin
+3. Show ads in profil (companies, people)
