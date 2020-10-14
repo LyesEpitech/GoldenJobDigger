@@ -52,7 +52,7 @@ if (isset($_POST["search"])) {
                                 <h5 class="card-title">' . $firstName . '</h5> 
                                 <h5 class="card-title">' . $lastName . '</h5> 
                                 <h5 class="card-title">' . $birthDate . '</h5> 
-                                <h5 class="card-title">' . $adress . '</h5> 
+                                <h5     class="card-title">' . $adress . '</h5> 
                                 <h5 class="card-title">' . $city . '</h5> 
                                 <h5 class="card-title">' . $zipCode . '</h5> 
                                 <a target="_blank" href="../View/pics.php?resume='.$resume.'"><img src="../Files/pics/' . $resume . '" width="50" height="50"></a>
