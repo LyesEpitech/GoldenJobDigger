@@ -128,7 +128,43 @@ function redirect() {
     window.location.replace("../Controler/deconnexion.php");
 }
 
+function isset(tvar) {
+    if (typeof (tvar) == "undefined") {
+        return false;
+    } else {
+        return true;
+    }
+}
 
+function showGroup(nb, nbAds) {
+    if(nb < nbAds/4 && nb > -1){
+        if (!isset(document.getElementById("link" + nb).classList[1])) {
+            for (i = 0; i < (nbAds / 4); i++) {
+                document.getElementById("group" + i).style.display = "none";
+                document.getElementById("link" + i).classList.remove("active");
+            }
+            document.getElementById("group" + nb).style.display = "inline";
+            document.getElementById("link" + nb).classList.add("active");
+    
+            window.scrollTo(0, 0);
+        }
+    }
+}
+
+function showNextGroup(nbAds) {
+    nb = document.getElementsByClassName("page-item active")[0].id;
+    nb = nb.slice(-1);
+    if (nb.slice(-1) != (nbAds / 4)) {
+        showGroup(parseInt(nb) + 1, nbAds);
+    }
+
+}
+
+function showPreviousGroup(nbAds) {
+    nb = document.getElementsByClassName("page-item active")[0].id;
+    nb = nb.slice(-1);
+    showGroup(nb - 1, nbAds);
+}
 
 
 function learnMore(nb) {
@@ -136,14 +172,10 @@ function learnMore(nb) {
     var button = document.getElementById("button" + nb);
     if (button.innerHTML == "Show more") {
         button.innerHTML = "Show less";
-        learnMore.innerHTML = ` <h5 class="card-header">Titre</h5>
-        <div class="card-body">
-            <p class="card-text">Description</p>
-            <small>Name of companie</small><img src="../Files/pics/'.$companiesPics.'" width="50" height="50">
-        </div>`
+        learnMore.style.display = "inline";
     } else {
         button.innerHTML = "Show more";
-        learnMore.innerHTML = ""
+        learnMore.style.display = "none";
     }
 }
 
@@ -153,7 +185,7 @@ function addSkill() {
     var showSkills = document.getElementById("showSkills");
     var skill = document.getElementById("InputSkills").value;
     var SkillsList = document.getElementById("InputSkillsList")
-    
+
     if (skill != "") {
         skills.push(skill);
         showSkills.innerHTML = "";
@@ -177,7 +209,7 @@ function addDomain() {
     var showDomains = document.getElementById("showDomains");
     var Domain = document.getElementById("InputDomains").value;
     var DomainsList = document.getElementById("InputDomainsList")
-    
+
     if (Domain != "") {
         Domains.push(Domain);
         showDomains.innerHTML = "";
@@ -195,3 +227,4 @@ function removeDomain(index) {
     Domains.splice(index, 1);
     DomainsList.value = Domains.toString();
 }
+

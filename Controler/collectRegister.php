@@ -1,6 +1,4 @@
 <?php
-
-
 $error = "";
 if (isset($_POST['SubmitSignUp']) AND isset($_POST['EmailSignUp'])) {
 	if (isset($_POST['FirstNameSignUp']) and isset($_POST['LastNameSignUp']) and isset($_POST['SexSignUp']) and isset($_POST['DateSignUp'])  and isset($_POST['AdressSignUp']) and isset($_POST['CitySignUp']) and isset($_POST['ZipCodeSignUp']) and isset($_POST['Password1SignUp']) and isset($_POST['Password2SignUp']) and isset($_POST['TermsSignUp'])) {
@@ -135,6 +133,11 @@ if (isset($_POST['SubmitSignUp']) AND isset($_POST['EmailSignUpCompanies'])) {
 	}
 }
 
-echo $error;
 if ($error != "") {
+
+}else{
+	echo $error;
+
 }
+
+?>
