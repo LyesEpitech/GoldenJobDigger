@@ -27,10 +27,12 @@ function showCompanies() {
     <div class="form-group">
         <label for="InputPassword1">Password</label>
         <input name="Password1SignUp" type="password" class="form-control" id="InputPassword1" placeholder="p@sSw0rd">
+        <i title="8 characters minimum" class="fas fa-info-circle"></i>
     </div>
     <div class="form-group">
         <label for="InputPassword2">Confirm Password</label>
         <input name="Password2SignUp" type="password" class="form-control" id="InputPassword2" placeholder="p@sSw0rd">
+        <i title="8 characters minimum" class="fas fa-info-circle"></i>
     </div>
     <div class="form-group">
         <label for="InputPic">Your Pic</label>
@@ -39,6 +41,7 @@ function showCompanies() {
     <div class="form-group form-check">
         <input name="TermsSignUp" type="checkbox" class="form-check-input" id="exampleCheck1">
         <label class="form-check-label" for="exampleCheck1">Accept Terms</label>
+        <a href="../view/RGPD.php">RGPD</a>
     </div>`
 }
 
@@ -64,17 +67,7 @@ function showPeople() {
         <label for="InputLastName">Last name</label>
         <input name="LastNameSignUp" type="text" class="form-control" id="InputLastName" placeholder="Johnson">
     </div>
-    <div class="form-group">
-        <label for="inputSex">Sex</label>
-        <select name="SexSignUp" id="inputSex" class="form-control">
-            <option selected>Male</option>
-            <option>Female</option>
-        </select>
-    </div>
-    <div class="form-group">
-        <label for="InputDate">Phone number</label>
-        <input name="DateSignUp" type="date" class="form-control" id="InputDate" >
-    </div>
+  
     <div class="form-group">
         <label for="inputAddress">Address</label>
         <input name="AdressSignUp" type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
@@ -86,22 +79,27 @@ function showPeople() {
     <div class="form-group">
         <label for="inputZipCode">Zip Code</label>
         <input name="ZipCodeSignUp" type="text" class="form-control" id="inputZipCode" placeholder="10001">
+        <i title="format : XXXXX" class="fas fa-info-circle"></i>
     </div>
     <div class="form-group">
         <label for="InputPassword1">Password</label>
         <input name="Password1SignUp" type="password" class="form-control" id="InputPassword1" placeholder="p@sSw0rd">
+        <i title="8 characters minimum" class="fas fa-info-circle"></i>
     </div>
     <div class="form-group">
         <label for="InputPassword2">Confirm Password</label>
         <input name="Password2SignUp" type="password" class="form-control" id="InputPassword2" placeholder="p@sSw0rd">
+        <i title="8 characters minimum" class="fas fa-info-circle"></i>
     </div>
     <div class="form-group">
         <label for="InputResume">Your Resume</label>
         <input name="ResumeSignUp" type="file" class="form-control" id="InputResume" accept="application/pdf">
+        <i title="PDF file only , do not exced 10 mo" class="fas fa-info-circle"></i>
     </div>
     <div class="form-group form-check">
         <input name="TermsSignUp" type="checkbox" class="form-check-input" id="exampleCheck1">
-        <label class="form-check-label" for="exampleCheck1">Accept Terms</label>
+       <label class="form-check-label" for="exampleCheck1">Accept Terms</label> 
+       <a href="../view/RGPD.php">RGPD</a>
     </div>`
 }
 

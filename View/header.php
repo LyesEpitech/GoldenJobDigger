@@ -18,14 +18,14 @@
 							<a class="nav-link" href="companies.php">Companies</a>
 						</li>
 						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							<a class="nav-link dropdown-toggle" href="events.php" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 								Find a job
 							</a>
 							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 								<a class="dropdown-item" href="ads.php">Discover offers</a>
-								<a class="dropdown-item" href="#">Discover events</a>
+								<a class="dropdown-item" href="events.php">Discover events</a>
 								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="#">Advices</a>
+								<a class="dropdown-item" href="advices.php">Advices</a>
 							</div>
 						</li>
 						
@@ -88,56 +88,51 @@
 							<label class="form-check-label" for="Radio2">Companies</label>
 						</div>
 						<div class="form-group">
-							<label for="InputEmail1">Email address</label><i class="fas fa-info-circle"></i>
+							<label for="InputEmail1">Email address</label>
 							<input name="EmailSignUp" type="email" class="form-control" id="InputEmail1" placeholder="example@example.com">
 						</div>
 						<div class="form-group">
-							<label for="InputFirstName">First name</label><i class="fas fa-info-circle"></i>
+							<label for="InputFirstName">First name</label>
 							<input name="FirstNameSignUp" type="text" class="form-control" id="InputFirstName" placeholder="Bryan">
 						</div>
 						<div class="form-group">
-							<label for="InputLastName">Last name</label><i class="fas fa-info-circle"></i>
+							<label for="InputLastName">Last name</label>
 							<input name="LastNameSignUp" type="text" class="form-control" id="InputLastName" placeholder="Johnson">
 						</div>
-						<div class="form-group">
-							<label for="inputSex">Sex</label>
-							<select name="SexSignUp" id="inputSex" class="form-control">
-								<option selected>Male</option>
-								<option>Female</option>
-							</select>
-						</div>
+
 						<div class="form-group">
 							<label for="InputDate">Date of birth</label>
 							<input name="DateSignUp" type="date" class="form-control" id="InputDate">
 						</div>
 						<div class="form-group">
-							<label for="inputAddress">Address</label><i class="fas fa-info-circle"></i>
+							<label for="inputAddress">Address</label>
 							<input name="AdressSignUp" type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
 						</div>
 						<div class="form-group">
-							<label for="inputCity">City</label><i class="fas fa-info-circle"></i>
+							<label for="inputCity">City</label>
 							<input name="CitySignUp" type="text" class="form-control" id="inputCity" placeholder="New York">
 						</div>
 						<div class="form-group">
-							<label for="inputZipCode">Zip Code</label><i class="fas fa-info-circle"></i>
+							<label for="inputZipCode">Zip Code</label><i  title="format: XXXXX"  class="fas fa-info-circle"></i>
 							<input name="ZipCodeSignUp" type="text" class="form-control" id="inputZipCode" placeholder="10001">
 						</div>
 						<div class="form-group">
-							<label for="InputPassword1">Password</label><i class="fas fa-info-circle"></i>
+							<label for="InputPassword1">Password</label><i title="8 characters minimum" class="fas fa-info-circle"></i>
 							<input name="Password1SignUp" type="password" class="form-control" id="InputPassword1" placeholder="p@sSw0rd">
 						</div>
 						<div class="form-group">
-							<label for="InputPassword2">Confirm Password</label><i class="fas fa-info-circle"></i>
+							<label for="InputPassword2">Confirm Password</label><i  title="8 characters minimum" class="fas fa-info-circle"></i>
 							<input name="Password2SignUp" type="password" class="form-control" id="InputPassword2" placeholder="p@sSw0rd">
 						</div>
 						<div class="form-group">
-							<label for="InputResume">Your Resume</label>
+							<label for="InputResume">Your Resume</label> <i  title="pdf only , do not exced 10mo"  class="fas fa-info-circle"></i>
 							<input name="ResumeSignUp" type="file" class="form-control" id="InputResume" accept="application/pdf">
 						</div>
 						<div class="form-group form-check">
 							<input name="TermsSignUp" type="checkbox" class="form-check-input" id="exampleCheck1">
 							<label class="form-check-label" for="exampleCheck1">Accept Terms</label>
-							<i class="fas fa-info-circle"></i>
+                            <a href="RGPD.php">RGPD</a>
+
 						</div>
 					</div>
 					<div class="modal-footer">

@@ -12,15 +12,15 @@
 			</a>
 			<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 				<a class="dropdown-item" href="ads.php">Discover offers</a>
-				<a class="dropdown-item" href="#">Discover events</a>
+				<a class="dropdown-item" href="events.php">Discover events</a>
 				<div class="dropdown-divider"></div>
-				<a class="dropdown-item" href="#">Advices</a>
+				<a class="dropdown-item" href="advices.php">Advices</a>
 			</div>
 		</li>
 		
 	</ul>
 	<div class="container text-center">
-		<small>Copyright &copy; Your Website</small>
+		<small>Copyright &copy; GOLDENJOBDIGGER</small>
 	</div>
 </footer>
 

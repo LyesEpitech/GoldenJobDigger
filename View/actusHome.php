@@ -8,7 +8,7 @@ foreach ($json->articles as $News) {
 	if($i < 3){
     if ($i % 3 == 0) { ?>
         <div class="card-group">
-            <div class="card bg-warning">
+            <div class="card bg-white">
                 <img class="card-img-top" src="<?php echo $News->urlToImage ?>" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title"><?php echo $News->title ?></h5>
@@ -18,7 +18,7 @@ foreach ($json->articles as $News) {
             </div>
         <?php } else {
         ?>
-            <div class="card bg-warning">
+            <div class="card bg-white">
                 <img class="card-img-top" src="<?php echo $News->urlToImage ?>" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title"><?php echo $News->title ?></h5>
