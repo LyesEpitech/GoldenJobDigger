@@ -135,7 +135,7 @@ function isset(tvar) {
 }
 
 function showGroup(nb, nbAds) {
-    if(nb < nbAds/4 && nb > -1){
+    if (nb < nbAds / 4 && nb > -1) {
         if (!isset(document.getElementById("link" + nb).classList[1])) {
             for (i = 0; i < (nbAds / 4); i++) {
                 document.getElementById("group" + i).style.display = "none";
@@ -143,7 +143,7 @@ function showGroup(nb, nbAds) {
             }
             document.getElementById("group" + nb).style.display = "inline";
             document.getElementById("link" + nb).classList.add("active");
-    
+
             window.scrollTo(0, 0);
         }
     }
@@ -226,3 +226,78 @@ function removeDomain(index) {
     DomainsList.value = Domains.toString();
 }
 
+function changeCompanies(index) {
+    if (document.getElementById("form" + index + "Companies").style.display == "inline") {
+        document.getElementById("form" + index + "Companies").style.display = "none"
+    } else {
+        document.getElementById("form" + index + "Companies").style.display = "inline"
+    }
+}
+
+function changePeople(index) {
+    if (document.getElementById("form" + index + "People").style.display == "inline") {
+        document.getElementById("form" + index + "People").style.display = "none"
+    } else {
+        document.getElementById("form" + index + "People").style.display = "inline"
+    }
+}
+
+var idAdsGobal;
+function showModal(idAds) {
+    idAdsGobal = idAds;
+    document.getElementById("divModal").innerHTML = `<div class="modal fade" id="PostulerModal" tabindex="-1" role="dialog" aria-labelledby="PostulerModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="PostulerModalLabel">Postuler</h5>
+                <button onclick="hide()" type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form method="POST" enctype="multipart/form-data">
+                <div class="modal-body">
+
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Email address</label>
+                        <input name="EmailPostuler" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputMotivation">Description</label>
+                        <textarea name="MotivationPostuler" type="text" class="form-control" id="exampleInputMotivation"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputLevel">Job Type</label>
+                        <select name="level" id="inputLevel" class="form-control">
+                            <option selected>Bac</option>
+                            <option>Bac +1</option>
+                            <option>Bac +2</option>
+                            <option>Bac +3</option>
+                            <option>Bac +4</option>
+                            <option>Bac +5</option>
+                            <option>+ de Bac +5</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button onclick="hide()" type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                    <button name="Postuler" type="submit" class="btn btn-primary" value="`+ idAds + `">Postuler</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>`;
+    show();
+}
+
+function show() {
+    var locModal = document.getElementById('PostulerModal');
+    locModal.style.display = "block";
+    locModal.style.paddingRight = "17px";
+    locModal.className = "modal fade show";
+};
+
+function hide() {
+    var locModal = document.getElementById('PostulerModal');
+    locModal.style.display = "none";
+    locModal.className = "modal fade";
+};

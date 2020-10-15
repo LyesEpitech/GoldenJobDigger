@@ -1,132 +1,138 @@
 <?php
-if(isset($_COOKIE["role"]) AND $_COOKIE["role"] == "a"){
+if (isset($_COOKIE["role"]) and $_COOKIE["role"] == "a") {
+    $reqCompanies = $dbh->prepare("SELECT * FROM companies");
+    $reqCompanies->execute();
+    $resultCompanies = $reqCompanies->fetchAll();
 
+    $reqPeople = $dbh->prepare("SELECT * FROM people");
+    $reqPeople->execute();
+    $resultPeople = $reqPeople->fetchAll();
 ?>
-<div class="card">
-    <h5 class="card-header">Admin Panel</h5>
-    <div class="card-body">
-        <h5 class="card-title">Search by email</h5>
-
-        <nav class="navbar navbar-light bg-light">
-            <form class="form-inline" method="POST">
-                <input class="form-control mr-sm-2" name="search" type="search" placeholder="email@email.com" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
-        </nav>
-
+    <div class="card">
+        <h5 class="card-header">People</h5>
+        <div class="card-body">
+            <ul>
+                <?php
+                for ($i = 0; $i < $reqPeople->rowCount(); $i++) {
+                    $id = $resultPeople[$i]["id"];
+                    $email = $resultPeople[$i]["email"];
+                    $firstName = $resultPeople[$i]["prenom"];
+                    $lastName = $resultPeople[$i]["nom"];
+                    $dateNaissance = $resultPeople[$i]["date_naissance"];
+                    $adresse = $resultPeople[$i]["adresse"];
+                    $postal = $resultPeople[$i]["code_postal"];
+                    $city = $resultPeople[$i]["ville"];
+                    $resume = $resultPeople[$i]["resume"];
+                    echo "<li>" . $firstName . " " . $lastName . " <a onclick='changePeople(" . $id . ")' id='change" . $id . "'><i class='fas fa-cog'></i></a></li> 
+                    ";
+                    echo '
+                        <form method="post" id="form' . $id . 'People" style="display:none">
+                    <div class="form-group">
+                        <label for="InputEmailUpdate' . $id . '">Email address</label>
+                        <input name="emailUpdatePeople' . $id . '" type="email" class="form-control" id="InputEmaiUpdatel' . $id . '" value="' . $email . '">
+                    </div>
+                    <div class="form-group">
+                        <label for="InputFirstNameUpdate' . $id . '">First name</label>
+                        <input name="firstNameUpdate' . $id . '" type="text" class="form-control" id="InputFirstNameUpdate' . $id . '" value="' . $firstName . '">
+                    </div>
+                    <div class="form-group">
+                        <label for="InputLastNameUpdate' . $id . '">Last name</label>
+                        <input name="lastNameUpdate' . $id . '" type="text" class="form-control" id="InputLastNameUpdate' . $id . '" value="' . $lastName . '">
+                    </div>
+                    <div class="form-group">
+                        <label for="inputAddressUpdate' . $id . '">Address</label>
+                        <input name="adressUpdate' . $id . '" type="text" class="form-control" id="inputAddressUpdate' . $id . '" value="' . $adresse . '">
+                    </div>
+                    <div class="form-group">
+                        <label for="inputCityUpdate' . $id . '">City</label>
+                        <input name="cityUpdate' . $id . '" type="text" class="form-control" id="inputCityUpdate' . $id . '" value="' . $city . '">
+                    </div>
+                    <div class="form-group">
+                        <label for="inputZipCodeUpdate' . $id . '">Zip Code</label>
+                        <input name="zipCodeUpdate' . $id . '" type="text" class="form-control" id="inputZipCodeUpdate' . $id . '" value="' . $postal . '">
+                    </div>
+                    <button name="SubmitUpdatePeople" type="submit" class="btn btn-primary" value="' . $id . '">Change</button>
+                    </form>';
+                }
+                ?>
+                <ul>
+        </div>
     </div>
-</div>
+    <div class="card">
+        <h5 class="card-header">Companies</h5>
+        <div class="card-body">
+            <ul>
+                <?php
+                for ($i = 0; $i < $reqCompanies->rowCount(); $i++) {
+                    $id = $resultCompanies[$i]["id"];
+                    $email = $resultCompanies[$i]["email"];
+                    $name = $resultCompanies[$i]["name"];
+                    $description = $resultCompanies[$i]["description"];
+                    $city = $resultCompanies[$i]["ville"];
+                    echo "<li>" . $name . " <a id='change" . $id . "' onclick='changeCompanies(" . $id . ")'><i class='fas fa-cog'></i></a></li>";
+                    echo '
+                        <form method="post" id="form' . $id . 'Companies" style="display:none">
+                    <div class="form-group">
+                        <label for="InputEmailCompanies' . $id . '">Email address</label>
+                        <input name="emailUpdateCompanies' . $id . '" type="email" class="form-control" id="InputEmailCompanies' . $id . '" value="' . $email . '">
+                    </div>
+                    <div class="form-group">
+                        <label for="InputName' . $id . '">Name</label>
+                        <input name="nameUpdate' . $id . '" type="text" class="form-control" id="InputName' . $id . '" value="' . $name . '">
+                    </div>
+                    <div class="form-group">
+                        <label for="InputDescription' . $id . '">Description</label>
+                        <input name="descriptionUpdate' . $id . '" type="textarea" class="form-control" id="InputDescription' . $id . '" value="' . $description . '">
+                    </div>
+                    <div class="form-group">
+                        <label for="inputCity' . $id . '">City</label>
+                        <input name="cityUpdate' . $id . '" type="text" class="form-control" id="inputCity' . $id . '" value="' . $city . '">
+                    </div>
+                    <button name="SubmitUpdateCompanies" type="submit" class="btn btn-primary" value="' . $id . '">Change</button>
+                    </form>
+                    ';
+                }
+                ?>
+                <ul>
+        </div>
+    </div>
 <?php
 
-$reqCompanies = $dbh->prepare("SELECT * FROM companies");
-$reqCompanies->execute();
-$resultCompanies = $reqCompanies->fetchAll();
-
-$reqPeople = $dbh->prepare("SELECT * FROM people");
-$reqPeople->execute();
-$resultPeople = $reqPeople->fetchAll();
-
-
-
-if (isset($_POST["search"])) {
-    $search = $_POST["search"];
-    for ($i = 0; $i < $reqPeople->rowCount(); $i++) {
-        if ($search == $resultPeople[$i]["email"]) {
-            $i = $reqPeople->rowCount();
-            $id = $resultPeople[0]["id"];
-            $email = $resultPeople[0]["email"];
-            $firstName = $resultPeople[0]["prenom"];
-            $lastName = $resultPeople[0]["nom"];
-            $birthDate = $resultPeople[0]["date_naissance"];
-            $adress = $resultPeople[0]["adresse"];
-            $city = $resultPeople[0]["ville"];
-            $zipCode = $resultPeople[0]["code_postal"];
-            $resume = $resultPeople[0]["email"] . $resultPeople[0]["resume"];
-            echo '
-                <div class="card">
-                    <h5 class="card-header"><?php echo $resultCompanies[0]["name"] ?></h5>
-                    <div class="card-body"> 
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">' . $id . '</h5> 
-                                <h5 class="card-title">' . $firstName . '</h5> 
-                                <h5 class="card-title">' . $lastName . '</h5> 
-                                <h5 class="card-title">' . $birthDate . '</h5> 
-                                <h5     class="card-title">' . $adress . '</h5> 
-                                <h5 class="card-title">' . $city . '</h5> 
-                                <h5 class="card-title">' . $zipCode . '</h5> 
-                                <a target="_blank" href="../View/pics.php?resume='.$resume.'"><img src="../Files/pics/' . $resume . '" width="50" height="50"></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>';
-        }
-    }
-
-    for ($i = 0; $i < $reqCompanies->rowCount(); $i++) {
-        if ($search == $resultCompanies[$i]["email"]) {
-            $i = $reqCompanies->rowCount();
-            $idCompanies = $resultCompanies[0]["id"];
-            $description = $resultCompanies[0]["description"];
-            $companiesName = $resultCompanies[0]["name"];
-            $companiesPics = $resultCompanies[0]["email"] . $resultCompanies[0]["photo"];
-            echo '
-                <div class="card">
-                    <h5 class="card-header"><?php echo $resultCompanies[0]["name"] ?></h5>
-                    <div class="card-body"> 
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">' . $companiesName . '</h5> 
-                                <p class="card-text">' . $description . '</p>
-                                <small>' . $companiesName . '</small><img src="../Files/pics/' . $companiesPics . '" width="50" height="50"></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>';
-
-    $reqAds = $dbh->prepare("SELECT * FROM ads WHERE companies_id= ?");
-    $reqAds->execute(array($idCompanies));
-    $resultAds = $reqAds->fetchAll();
-    if($reqAds->rowCount()){
-        for ($i = 0; $i < $reqAds->rowCount(); $i++) {
-            $title = $resultAds[$i]['title'];
-            $description = $resultAds[$i]['description'];
-            $idAds = $resultAds[$i]['id'];
-            $idCompanies = $resultAds[$i]['companies_id'];
-            $reqCompanies = $dbh->prepare("SELECT * FROM companies WHERE id = $idCompanies");
-            $reqCompanies->execute();
-            $resultCompanies = $reqCompanies->fetchAll();
-            $companiesName = $resultCompanies[0]["name"];
-            $companiesPics = $resultCompanies[0]["email"] . $resultCompanies[0]["photo"];
-            echo '
-        
-                        <div class="col-sm-4">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h5 class="card-title">'.$title.'</h5> 
-                                    <p class="card-text">'.$description.'</p>
-                                    <a href="../View/ads.php?id='.$idAds.'" class="btn btn-primary">More information</a>
-                                </div>
-                            </div>
-                        </div>
-                ';
+    if (isset($_POST["SubmitUpdatePeople"])) {
+        $id = $_POST["SubmitUpdatePeople"];
+            if (isset($_POST['emailUpdatePeople' . $id . '']) and isset($_POST['firstNameUpdate' . $id . '']) and isset($_POST['lastNameUpdate' . $id . '']) and isset($_POST['adressUpdate' . $id . '']) and isset($_POST['cityUpdate' . $id . '']) and isset($_POST['zipCodeUpdate' . $id . ''])) {
+                $email = $_POST['emailUpdatePeople' . $id . ''];
+                $firstName = $_POST['firstNameUpdate' . $id . ''];
+                $lastName = $_POST['lastNameUpdate' . $id . ''];
+                $adresse = $_POST['adressUpdate' . $id . ''];
+                $city = $_POST['cityUpdate' . $id . ''];
+                $request = $dbh->prepare('SELECT email FROM People WHERE email=?');
+                $request->execute(array($dbh->quote($email)));
+                $result = $request->fetchAll();
+                if (filter_var($email, FILTER_VALIDATE_EMAIL) and !isset($result[0])) {
+                    $regex = "/[a-zA-Z]{3,30}$/";
+                    if (preg_match($regex, $firstName) and preg_match($regex, $lastName)) {
+                        $regex = "/^[A-Za-zÀ-ÿ0-9\.,\- ]{1,34}$/";
+                        if (preg_match($regex, $city)) {
+                            $count = $request = $dbh->exec('UPDATE people (`email`, `prenom`, `nom`, `adresse` , `ville`) VALUES (' . $dbh->quote($email) . ', '  . $dbh->quote($firstName) . ',' . $dbh->quote($lastName) . ', ' . $dbh->quote($adresse) . ', ' . $dbh->quote($city) . ') WHERE id= ' . $dbh->quote($id) . '');
+                            echo 'UPDATE people (`email`, `prenom`, `nom`, `adresse` , `ville`) VALUES (' . $dbh->quote($email) . ', '  . $dbh->quote($firstName) . ',' . $dbh->quote($lastName) . ', ' . $dbh->quote($adresse) . ', ' . $dbh->quote($city) . ') WHERE id= ' . $dbh->quote($id) . '';
+                        } else {
+                            $error = "Invalid city.";
+                        }
+                    } else {
+                        $error = "Name not valid.";
+                    }
+                } else {
+                    $error = "Invalid Email or already exist.";
+                }
+            } else {
+                $error = "Fill all the blanks.";
             }
-            echo '</div>';
-    }
-    echo '<div class="row jobs">';
-    
-    }
-}
-    for ($i = 0; $i < $reqPeople->rowCount(); $i++) {
-        if($search == $resultPeople[$i]["email"]){
-            
-
         }
-    }
 
-}
+        echo $error;
 
-}else{
+} else {
     echo '<script>
         document.location.replace("../View/home.php");
     </script>';

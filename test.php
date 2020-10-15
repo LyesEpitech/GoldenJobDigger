@@ -43,3 +43,44 @@
 </html>
 
 
+<div class="modal fade" id="PostulerModal" tabindex="-1" role="dialog" aria-labelledby="PostulerModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="PostulerModalLabel">Postuler</h5>
+                <button onclick="hide()" type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form method="POST" enctype="multipart/form-data">
+                <div class="modal-body">
+
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Email address</label>
+                        <input name="EmailPostuler" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputMotivation">Description</label>
+                        <textarea name="MotivationPostuler" type="text" class="form-control" id="exampleInputMotivation"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputLevel">Job Type</label>
+                        <select name="level" id="inputLevel" class="form-control">
+                            <option selected>Bac</option>
+                            <option>Bac +1</option>
+                            <option>Bac +2</option>
+                            <option>Bac +3</option>
+                            <option>Bac +4</option>
+                            <option>Bac +5</option>
+                            <option>+ de Bac +5</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button onclick="hide()" type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                    <button name="Postuler" type="submit" class="btn btn-primary" value="`+ idAds + `">Postuler</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
