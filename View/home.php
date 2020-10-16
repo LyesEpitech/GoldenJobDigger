@@ -16,10 +16,10 @@
 
 		<main>
             <img  class="rounded" width="100%" height="auto" src="../style/home.png" alt="homelogo">
-			<?php include 'actusHome.php';?>
-            <img  class="rounded" width="100%" height="auto" src="../style/home5.png" alt="homelogo5">
+            
 
             <?php include 'companiesHome.php';?>
+			<img  class="rounded" width="100%" height="auto" src="../style/home5.png" alt="homelogo5">	
 			<?php include 'jobsHome.php';?>	
 		</main>
 		

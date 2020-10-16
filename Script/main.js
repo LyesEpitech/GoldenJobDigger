@@ -41,7 +41,7 @@ function showCompanies() {
     <div class="form-group form-check">
         <input name="TermsSignUp" type="checkbox" class="form-check-input" id="exampleCheck1">
         <label class="form-check-label" for="exampleCheck1">Accept Terms</label>
-        <a href="../view/RGPD.php">RGPD</a>
+        <a href="../view/RGPD.php" target="_blank" >RGPD</a>
     </div>`
 }
 
@@ -99,7 +99,7 @@ function showPeople() {
     <div class="form-group form-check">
         <input name="TermsSignUp" type="checkbox" class="form-check-input" id="exampleCheck1">
        <label class="form-check-label" for="exampleCheck1">Accept Terms</label> 
-       <a href="../view/RGPD.php">RGPD</a>
+       <a href="../view/RGPD.php" target="_blank">RGPD</a>
     </div>`
 }
 
@@ -239,7 +239,17 @@ function changePeople(index) {
         document.getElementById("form" + index + "People").style.display = "none"
     } else {
         document.getElementById("form" + index + "People").style.display = "inline"
+        document.getElementById("formDelete" + index + "People").style.display = "none"
     }
+}
+
+function deletePeople(index) {
+    if (document.getElementById("formDelete" + index + "People").style.display == "inline") {
+        document.getElementById("formDelete" + index + "People").style.display = "none"
+    } else {
+        document.getElementById("formDelete" + index + "People").style.display = "inline"
+        document.getElementById("form" + index + "People").style.display = "none"
+    } 
 }
 
 var idAdsGobal;
@@ -379,3 +389,7 @@ function hide() {
     locModal.style.display = "none";
     locModal.className = "modal fade";
 };
+
+function refresh(){
+    location.reload()
+}

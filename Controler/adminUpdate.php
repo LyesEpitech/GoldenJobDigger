@@ -9,7 +9,7 @@ if (isset($_COOKIE["role"]) and $_COOKIE["role"] == "a") {
     $resultPeople = $reqPeople->fetchAll();
 ?>
     <div class="card">
-        <h5 class="card-header">People</h5>
+        <h5 class="card-header">People      <i onclick="refresh()" class="fas fa-sync"></i></h5>
         <div class="card-body">
             <ul>
                 <?php
@@ -23,8 +23,11 @@ if (isset($_COOKIE["role"]) and $_COOKIE["role"] == "a") {
                     $postal = $resultPeople[$i]["code_postal"];
                     $city = $resultPeople[$i]["ville"];
                     $resume = $resultPeople[$i]["resume"];
-                    echo "<li>" . $firstName . " " . $lastName . " <a onclick='changePeople(" . $id . ")' id='change" . $id . "'><i class='fas fa-cog'></i></a></li> 
+                    echo "<li>" . $firstName . " " . $lastName . " <a onclick='changePeople(" . $id . ")' id='change" . $id . "'><i class='fas fa-cog'></i></a> <a onclick='deletePeople(" . $id . ")' id='delete" . $id . "'><i class='fas fa-user-minus'></i></a></li> 
                     ";
+                    echo '<form method="post" id="formDelete' . $id . 'People" style="display:none">
+                        <button name="SubmitDeletePeople" type="submit" class="btn btn-primary" value="' . $id . '">Delete</button>
+                    </form>';
                     echo '
                         <form method="post" id="form' . $id . 'People" style="display:none">
                     <div class="form-group">
@@ -58,46 +61,13 @@ if (isset($_COOKIE["role"]) and $_COOKIE["role"] == "a") {
                 <ul>
         </div>
     </div>
-    <div class="card">
-        <h5 class="card-header">Companies</h5>
-        <div class="card-body">
-            <ul>
-                <?php
-                for ($i = 0; $i < $reqCompanies->rowCount(); $i++) {
-                    $id = $resultCompanies[$i]["id"];
-                    $email = $resultCompanies[$i]["email"];
-                    $name = $resultCompanies[$i]["name"];
-                    $description = $resultCompanies[$i]["description"];
-                    $city = $resultCompanies[$i]["ville"];
-                    echo "<li>" . $name . " <a id='change" . $id . "' onclick='changeCompanies(" . $id . ")'><i class='fas fa-cog'></i></a></li>";
-                    echo '
-                        <form method="post" id="form' . $id . 'Companies" style="display:none">
-                    <div class="form-group">
-                        <label for="InputEmailCompanies' . $id . '">Email address</label>
-                        <input name="emailUpdateCompanies' . $id . '" type="email" class="form-control" id="InputEmailCompanies' . $id . '" value="' . $email . '">
-                    </div>
-                    <div class="form-group">
-                        <label for="InputName' . $id . '">Name</label>
-                        <input name="nameUpdate' . $id . '" type="text" class="form-control" id="InputName' . $id . '" value="' . $name . '">
-                    </div>
-                    <div class="form-group">
-                        <label for="InputDescription' . $id . '">Description</label>
-                        <input name="descriptionUpdate' . $id . '" type="textarea" class="form-control" id="InputDescription' . $id . '" value="' . $description . '">
-                    </div>
-                    <div class="form-group">
-                        <label for="inputCity' . $id . '">City</label>
-                        <input name="cityUpdate' . $id . '" type="text" class="form-control" id="inputCity' . $id . '" value="' . $city . '">
-                    </div>
-                    <button name="SubmitUpdateCompanies" type="submit" class="btn btn-primary" value="' . $id . '">Change</button>
-                    </form>
-                    ';
-                }
-                ?>
-                <ul>
-        </div>
-    </div>
+    
 <?php
-
+    if(isset($_POST["SubmitDeletePeople"])){
+        $id = $_POST["SubmitDeletePeople"];
+        $request = $dbh->exec("DELETE FROM people WHERE id = ".$id."");
+        echo "DELETE FROM people WHERE id = ".$id."";
+    }
     if (isset($_POST["SubmitUpdatePeople"])) {
         $id = $_POST["SubmitUpdatePeople"];
             if (isset($_POST['emailUpdatePeople' . $id . '']) and isset($_POST['firstNameUpdate' . $id . '']) and isset($_POST['lastNameUpdate' . $id . '']) and isset($_POST['adressUpdate' . $id . '']) and isset($_POST['cityUpdate' . $id . '']) and isset($_POST['zipCodeUpdate' . $id . ''])) {
@@ -116,7 +86,7 @@ if (isset($_COOKIE["role"]) and $_COOKIE["role"] == "a") {
                         if (preg_match($regex, $city)) {
                             echo "ici";
                             $request = $dbh->exec('UPDATE people SET  `email`=' . $dbh->quote($email) . ', `prenom`='  . $dbh->quote($firstName) . ', `nom`=' . $dbh->quote($lastName) . ', `adresse`=' . $dbh->quote($adresse) . ', `ville`=' . $dbh->quote($city) . ' WHERE `id`= ' . $dbh->quote($id) . '');
-                            echo 'UPDATE people SET  `email`=' . $dbh->quote($email) . ', `prenom`='  . $dbh->quote($firstName) . ', `nom`=' . $dbh->quote($lastName) . ', `adresse`=' . $dbh->quote($adresse) . ', `ville`=' . $dbh->quote($city) . ' WHERE `id`= ' . $dbh->quote($id) . '';
+                            header("Refresh:0");
                         } else {
                             $error = "Invalid city.";
                         }

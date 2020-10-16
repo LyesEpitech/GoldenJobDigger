@@ -131,7 +131,7 @@
 						<div class="form-group form-check">
 							<input name="TermsSignUp" type="checkbox" class="form-check-input" id="exampleCheck1">
 							<label class="form-check-label" for="exampleCheck1">Accept Terms</label>
-                            <a href="RGPD.php">RGPD</a>
+                            <a href="RGPD.php" target="_blank">RGPD</a>
 
 						</div>
 					</div>
