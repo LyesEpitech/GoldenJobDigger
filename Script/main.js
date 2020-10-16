@@ -244,8 +244,9 @@ function changePeople(index) {
 
 var idAdsGobal;
 function showModal(idAds) {
-    idAdsGobal = idAds;
-    document.getElementById("divModal").innerHTML = `<div class="modal fade" id="PostulerModal" tabindex="-1" role="dialog" aria-labelledby="PostulerModalLabel" aria-hidden="true">
+    if ((document.cookie).includes("p")) {
+        idAdsGobal = idAds;
+        document.getElementById("divModal").innerHTML = `<div style="overflow-y: auto;" class="modal fade" id="PostulerModal" tabindex="-1" role="dialog" aria-labelledby="PostulerModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -257,26 +258,100 @@ function showModal(idAds) {
             <form method="POST" enctype="multipart/form-data">
                 <div class="modal-body">
 
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Email address</label>
-                        <input name="EmailPostuler" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputMotivation">Description</label>
-                        <textarea name="MotivationPostuler" type="text" class="form-control" id="exampleInputMotivation"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="inputLevel">Job Type</label>
-                        <select name="level" id="inputLevel" class="form-control">
-                            <option selected>Bac</option>
-                            <option>Bac +1</option>
-                            <option>Bac +2</option>
-                            <option>Bac +3</option>
-                            <option>Bac +4</option>
-                            <option>Bac +5</option>
-                            <option>+ de Bac +5</option>
-                        </select>
-                    </div>
+                <div class="form-group">
+                <label for="InputEmail1">Email address</label>
+                <input name="EmailModal" type="email" class="form-control" id="InputEmail1" placeholder="example@example.com">
+            </div>
+            <div class="form-group">
+                <label for="InputResume">Your Resume</label> <i  title="pdf only , do not exced 10mo"  class="fas fa-info-circle"></i>
+                <input name="ResumeModal" type="file" class="form-control" id="InputResume" accept="application/pdf">
+            </div>
+            <div class="form-group">
+            <label for="InputMessage">Your message for companies</label>
+            <textarea class="form-control" type="text" name="MessageModal" id="InputMessage" ></textarea>
+            </div>
+                    
+                </div>
+                <div class="modal-footer">
+                    <button onclick="hide()" type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                    <button name="Postuler" type="submit" class="btn btn-primary" value="`+ idAds + `">Postuler</button>
+                </div>
+                
+            </form>
+        </div>
+    </div>
+</div>`;
+        //email	message	resume	id_people	id_companies	id_ads	
+        show();
+    } else {
+        idAdsGobal = idAds;
+        document.getElementById("divModal").innerHTML = `<div style="overflow-y: auto;" class="modal fade" id="PostulerModal" tabindex="-1" role="dialog" aria-labelledby="PostulerModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="PostulerModalLabel">Postuler</h5>
+                <button onclick="hide()" type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form method="POST" enctype="multipart/form-data">
+                <div class="modal-body">
+                <h5>Vous avez un compte ?</h5>
+                <div class="form-group">
+                    <label for="InputEmailSignInModal">Email address</label>
+                    <input name="EmailSignInModal" type="email" class="form-control" id="InputEmailSignInModal" aria-describedby="emailHelp">
+                </div>
+                <div class="form-group">
+                    <label for="InputPasswordSignInModal">Password</label>
+                    <input name="PasswordSignInModal" type="password" class="form-control" id="InputPasswordSignInModal">
+                </div>
+                <div class="form-group">
+                    <label for="InputMessageSignIn">Your message for companies</label>
+                    <textarea class="form-control" type="text" name="MessageModalSignIn" id="InputMessageSignIn" ></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="InputResumeSignIn">Your Resume</label> <i  title="dont fill if you want use save resume"  class="fas fa-info-circle"></i>
+                    <input name="ResumeModalSignIn" type="file" class="form-control" id="InputResumeSignIn" accept="application/pdf">
+                </div>
+                <h5>Pas de compte ?</h5>
+                <div class="form-group">
+                <label for="InputEmail1">Email address</label>
+                <input name="EmailModal" type="email" class="form-control" id="InputEmail1" placeholder="example@example.com">
+            </div>
+            <div class="form-group">
+                <label for="InputFirstName">First name</label>
+                <input name="FirstNameModal" type="text" class="form-control" id="InputFirstName" placeholder="Bryan">
+            </div>
+            <div class="form-group">
+                <label for="InputLastName">Last name</label>
+                <input name="LastNameModal" type="text" class="form-control" id="InputLastName" placeholder="Johnson">
+            </div>
+
+            <div class="form-group">
+                <label for="InputDate">Date of birth</label>
+                <input name="DateModal" type="date" class="form-control" id="InputDate">
+            </div>
+            <div class="form-group">
+                <label for="inputAddress">Address</label>
+                <input name="AdressModal" type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+            </div>
+            <div class="form-group">
+                <label for="inputCity">City</label>
+                <input name="CityModal" type="text" class="form-control" id="inputCity" placeholder="New York">
+            </div>
+            <div class="form-group">
+                <label for="inputZipCode">Zip Code</label><i  title="format: XXXXX"  class="fas fa-info-circle"></i>
+                <input name="ZipCodeModal" type="text" class="form-control" id="inputZipCode" placeholder="10001">
+            </div>
+            <div class="form-group">
+                <label for="InputResume">Your Resume</label> <i  title="pdf only , do not exced 10mo"  class="fas fa-info-circle"></i>
+                <input name="ResumeModal" type="file" class="form-control" id="InputResume" accept="application/pdf">
+            </div>
+            <div class="form-group">
+                <label for="InputMessage">Your message for companies</label>
+                <textarea class="form-control" type="text" name="MessageModal" id="InputMessage" ></textarea>
+            </div>
+            
                 </div>
                 <div class="modal-footer">
                     <button onclick="hide()" type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
@@ -286,7 +361,10 @@ function showModal(idAds) {
         </div>
     </div>
 </div>`;
-    show();
+        //email	message	resume	id_people	id_companies	id_ads	
+        show();
+    }
+
 }
 
 function show() {
