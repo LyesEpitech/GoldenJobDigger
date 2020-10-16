@@ -114,8 +114,9 @@ if (isset($_COOKIE["role"]) and $_COOKIE["role"] == "a") {
                     if (preg_match($regex, $firstName) and preg_match($regex, $lastName)) {
                         $regex = "/^[A-Za-zÀ-ÿ0-9\.,\- ]{1,34}$/";
                         if (preg_match($regex, $city)) {
-                            $count = $request = $dbh->exec('UPDATE people (`email`, `prenom`, `nom`, `adresse` , `ville`) VALUES (' . $dbh->quote($email) . ', '  . $dbh->quote($firstName) . ',' . $dbh->quote($lastName) . ', ' . $dbh->quote($adresse) . ', ' . $dbh->quote($city) . ') WHERE id= ' . $dbh->quote($id) . '');
-                            echo 'UPDATE people (`email`, `prenom`, `nom`, `adresse` , `ville`) VALUES (' . $dbh->quote($email) . ', '  . $dbh->quote($firstName) . ',' . $dbh->quote($lastName) . ', ' . $dbh->quote($adresse) . ', ' . $dbh->quote($city) . ') WHERE id= ' . $dbh->quote($id) . '';
+                            echo "ici";
+                            $request = $dbh->exec('UPDATE people SET  `email`=' . $dbh->quote($email) . ', `prenom`='  . $dbh->quote($firstName) . ', `nom`=' . $dbh->quote($lastName) . ', `adresse`=' . $dbh->quote($adresse) . ', `ville`=' . $dbh->quote($city) . ' WHERE `id`= ' . $dbh->quote($id) . '');
+                            echo 'UPDATE people SET  `email`=' . $dbh->quote($email) . ', `prenom`='  . $dbh->quote($firstName) . ', `nom`=' . $dbh->quote($lastName) . ', `adresse`=' . $dbh->quote($adresse) . ', `ville`=' . $dbh->quote($city) . ' WHERE `id`= ' . $dbh->quote($id) . '';
                         } else {
                             $error = "Invalid city.";
                         }
